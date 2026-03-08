@@ -1,7 +1,10 @@
 "use client"
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import { motion, useScroll, useVelocity, useTransform, useSpring, useAnimationFrame, useMotionValue } from "motion/react"
-import { wrap } from "@motionone/utils"
+const wrap = (min: number, max: number, v: number) => {
+  const range = max - min
+  return ((((v - min) % range) + range) % range) + min
+}
 
 interface VelocityMarqueeProps {
   items: string[]

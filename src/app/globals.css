@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bp-bg: #0B0F1C;
+  --bp-accent: #C4541A;
+  --bp-accent-hover: #D4601F;
+  --bp-fg: #ffffff;
+  --bp-muted: rgba(255, 255, 255, 0.45);
+  --bp-surface: rgba(255, 255, 255, 0.04);
+  --bp-border: rgba(255, 255, 255, 0.08);
+  --font-display: var(--font-geist), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bp-bg);
+  color: var(--bp-fg);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--bp-accent);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Nav CTA — visible on desktop only */
+@media (min-width: 768px) {
+  .nav-cta {
+    display: inline-block !important;
+  }
 }

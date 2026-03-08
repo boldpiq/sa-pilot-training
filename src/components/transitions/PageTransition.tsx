@@ -1,6 +1,6 @@
 "use client"
 import { type ReactNode } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, AnimatePresence, type Transition, type TargetAndTransition } from "motion/react"
 import { usePathname } from "next/navigation"
 
 type TransitionVariant = "fade" | "slide-up" | "scale" | "wipe" | "curtain"
@@ -10,7 +10,7 @@ interface PageTransitionProps {
   variant?: TransitionVariant
 }
 
-const variants: Record<TransitionVariant, { initial: object; animate: object; exit: object; transition: object }> = {
+const variants: Record<TransitionVariant, { initial: TargetAndTransition; animate: TargetAndTransition; exit: TargetAndTransition; transition: Transition }> = {
   fade: {
     initial:    { opacity: 0 },
     animate:    { opacity: 1 },
