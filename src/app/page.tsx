@@ -1,6 +1,6 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValueEvent, useMotionValue, useAnimationFrame } from "motion/react"
+import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValueEvent, useAnimationFrame } from "motion/react"
 import { VelocityMarquee } from "@/components/scroll/VelocityMarquee"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 
@@ -111,30 +111,46 @@ function ProcessStep({ number, title, description }: { number: string; title: st
   )
 }
 
-function FloatingOrb({ top, left, width, height, opacity, blur, speedX, speedY, rangeX, rangeY, style }: {
-  top: string; left: string; width: number; height: number
-  opacity: number; blur: number; speedX: number; speedY: number; rangeX: number; rangeY: number
-  style?: React.CSSProperties
-}) {
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
+// Static gradient on an oversized div — only transform changes each frame.
+// GPU-accelerated translate = zero flicker, same visual quality as hero.
+function ProcessGlow() {
+  const ref1 = useRef<HTMLDivElement>(null)
+  const ref2 = useRef<HTMLDivElement>(null)
   useAnimationFrame((t) => {
-    x.set(Math.sin(t * speedX) * rangeX)
-    y.set(Math.cos(t * speedY) * rangeY)
+    if (ref1.current) {
+      const x = Math.sin(t * 0.00028) * 120
+      const y = Math.cos(t * 0.00019) * 80
+      ref1.current.style.transform = `translate(${x}px, ${y}px)`
+    }
+    if (ref2.current) {
+      const x = Math.cos(t * 0.00022) * 90
+      const y = Math.sin(t * 0.00034) * 70
+      ref2.current.style.transform = `translate(${x}px, ${y}px)`
+    }
   })
   return (
-    <motion.div
-      style={{
-        position: "absolute",
-        top, left, width, height,
-        borderRadius: "50%",
-        background: `radial-gradient(circle, rgba(196,84,26,${opacity}) 0%, transparent 65%)`,
-        filter: `blur(${blur}px)`,
-        pointerEvents: "none",
-        x, y,
-        ...style,
-      }}
-    />
+    <>
+      <div
+        ref={ref1}
+        style={{
+          position: "absolute",
+          inset: -160,
+          pointerEvents: "none",
+          background: `radial-gradient(ellipse 55% 48% at 60% 40%, rgba(196,84,26,0.11) 0%, transparent 68%)`,
+          willChange: "transform",
+        }}
+      />
+      <div
+        ref={ref2}
+        style={{
+          position: "absolute",
+          inset: -120,
+          pointerEvents: "none",
+          background: `radial-gradient(ellipse 42% 38% at 38% 60%, rgba(196,84,26,0.06) 0%, transparent 62%)`,
+          willChange: "transform",
+        }}
+      />
+    </>
   )
 }
 
@@ -350,8 +366,7 @@ export default function Home() {
 
       {/* ── PROCESS (animated orb background) ────────────────────── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
-        <FloatingOrb top="5%" left="20%" width={700} height={560} opacity={0.13} blur={36} speedX={0.00028} speedY={0.00019} rangeX={110} rangeY={70} />
-        <FloatingOrb top="30%" left="45%" width={480} height={400} opacity={0.09} blur={48} speedX={0.00017} speedY={0.00031} rangeX={80} rangeY={90} />
+        <ProcessGlow />
 
         <Section id="process" style={{ paddingTop: 0 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 100px)", alignItems: "start" }}>
