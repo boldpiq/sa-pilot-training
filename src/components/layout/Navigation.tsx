@@ -80,8 +80,8 @@ export function Navigation({
           {logo ?? "boldpiq"}
         </Link>
 
-        {/* Desktop nav */}
-        <nav style={{ display: "flex", gap: 36, alignItems: "center" }}>
+        {/* Desktop nav — hidden on mobile */}
+        <nav className="hidden md:flex" style={{ gap: 36, alignItems: "center" }}>
           {items.map((item) => (
             <MagneticLink key={item.href} href={item.href} color={fg}>
               {item.label}
