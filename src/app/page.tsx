@@ -323,34 +323,36 @@ export default function Home() {
 
       {/* ── PROCESS (animated orb background) ────────────────────── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
-        {/* Orb 1 — slow drift */}
+        {/* Primary orb — matches hero glow strength, slow drift */}
         <motion.div
-          animate={{ x: ["-20%", "25%", "5%", "-20%"], y: ["0%", "20%", "-15%", "0%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ x: [-80, 180, 60, -80], y: [-40, 100, -80, -40] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", repeatType: "loop" }}
           style={{
             position: "absolute",
-            width: "55%",
-            height: "75%",
-            top: "12%",
-            left: "22%",
-            background: `radial-gradient(ellipse at 50% 50%, rgba(196,84,26,0.09) 0%, transparent 70%)`,
+            width: 700,
+            height: 560,
+            top: "5%",
+            left: "20%",
+            borderRadius: "50%",
+            background: `radial-gradient(circle, rgba(196,84,26,0.13) 0%, rgba(196,84,26,0.05) 45%, transparent 70%)`,
             pointerEvents: "none",
-            filter: "blur(64px)",
+            filter: "blur(36px)",
           }}
         />
-        {/* Orb 2 — counter drift */}
+        {/* Secondary orb — softer, counter-moves */}
         <motion.div
-          animate={{ x: ["15%", "-18%", "8%", "15%"], y: ["15%", "-10%", "20%", "15%"] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ x: [120, -100, 60, 120], y: [80, -60, 120, 80] }}
+          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", repeatType: "loop" }}
           style={{
             position: "absolute",
-            width: "38%",
-            height: "55%",
-            top: "25%",
-            left: "35%",
-            background: `radial-gradient(ellipse at 50% 50%, rgba(196,84,26,0.06) 0%, transparent 70%)`,
+            width: 480,
+            height: 400,
+            top: "30%",
+            left: "45%",
+            borderRadius: "50%",
+            background: `radial-gradient(circle, rgba(196,84,26,0.09) 0%, transparent 65%)`,
             pointerEvents: "none",
-            filter: "blur(80px)",
+            filter: "blur(48px)",
           }}
         />
 
