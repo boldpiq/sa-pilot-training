@@ -25,6 +25,7 @@ export { StickyScroll } from "./scroll/StickyScroll"
 export { RevealMask } from "./scroll/RevealMask"
 
 // ─── Layout ───────────────────────────────────────────────────
+export { Navigation } from "./layout/Navigation"
 export { AnimatedAccordion } from "./layout/AnimatedAccordion"
 export { AnimatedTabs } from "./layout/AnimatedTabs"
 
@@ -33,6 +34,7 @@ export { FloatingGeometry } from "./three/FloatingGeometry"
 export { ParticleField } from "./three/ParticleField"
 export { WavePlane } from "./three/WavePlane"
 export { GlowOrb } from "./three/GlowOrb"
+export { WebGLErrorBoundary } from "./three/WebGLErrorBoundary"
 
 // ─── Loaders ──────────────────────────────────────────────────
 export { PageLoader } from "./loaders/PageLoader"
