@@ -23,10 +23,10 @@ export const metadata: Metadata = {
 }
 
 const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navigation
           items={navItems}
           ctaLabel="Get Started"
-          ctaHref="#contact"
+          ctaHref="/contact"
           theme="dark"
         />
         <LenisProvider>
