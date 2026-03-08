@@ -1,6 +1,6 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValueEvent } from "motion/react"
+import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValueEvent, useMotionValue, useAnimationFrame } from "motion/react"
 import { VelocityMarquee } from "@/components/scroll/VelocityMarquee"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 
@@ -108,6 +108,33 @@ function ProcessStep({ number, title, description }: { number: string; title: st
         <p style={{ color: MUTED, lineHeight: 1.7, fontSize: 15 }}>{description}</p>
       </div>
     </div>
+  )
+}
+
+function FloatingOrb({ top, left, width, height, opacity, blur, speedX, speedY, rangeX, rangeY, style }: {
+  top: string; left: string; width: number; height: number
+  opacity: number; blur: number; speedX: number; speedY: number; rangeX: number; rangeY: number
+  style?: React.CSSProperties
+}) {
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  useAnimationFrame((t) => {
+    x.set(Math.sin(t * speedX) * rangeX)
+    y.set(Math.cos(t * speedY) * rangeY)
+  })
+  return (
+    <motion.div
+      style={{
+        position: "absolute",
+        top, left, width, height,
+        borderRadius: "50%",
+        background: `radial-gradient(circle, rgba(196,84,26,${opacity}) 0%, transparent 65%)`,
+        filter: `blur(${blur}px)`,
+        pointerEvents: "none",
+        x, y,
+        ...style,
+      }}
+    />
   )
 }
 
@@ -323,38 +350,8 @@ export default function Home() {
 
       {/* ── PROCESS (animated orb background) ────────────────────── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
-        {/* Primary orb — matches hero glow strength, slow drift */}
-        <motion.div
-          animate={{ x: [-80, 180, 60, -80], y: [-40, 100, -80, -40] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", repeatType: "loop" }}
-          style={{
-            position: "absolute",
-            width: 700,
-            height: 560,
-            top: "5%",
-            left: "20%",
-            borderRadius: "50%",
-            background: `radial-gradient(circle, rgba(196,84,26,0.13) 0%, rgba(196,84,26,0.05) 45%, transparent 70%)`,
-            pointerEvents: "none",
-            filter: "blur(36px)",
-          }}
-        />
-        {/* Secondary orb — softer, counter-moves */}
-        <motion.div
-          animate={{ x: [120, -100, 60, 120], y: [80, -60, 120, 80] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", repeatType: "loop" }}
-          style={{
-            position: "absolute",
-            width: 480,
-            height: 400,
-            top: "30%",
-            left: "45%",
-            borderRadius: "50%",
-            background: `radial-gradient(circle, rgba(196,84,26,0.09) 0%, transparent 65%)`,
-            pointerEvents: "none",
-            filter: "blur(48px)",
-          }}
-        />
+        <FloatingOrb top="5%" left="20%" width={700} height={560} opacity={0.13} blur={36} speedX={0.00028} speedY={0.00019} rangeX={110} rangeY={70} />
+        <FloatingOrb top="30%" left="45%" width={480} height={400} opacity={0.09} blur={48} speedX={0.00017} speedY={0.00031} rangeX={80} rangeY={90} />
 
         <Section id="process" style={{ paddingTop: 0 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 100px)", alignItems: "start" }}>
