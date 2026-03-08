@@ -104,7 +104,7 @@ export default function WorkPage() {
     <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
 
       {/* HERO */}
-      <section style={{ padding: "160px clamp(20px, 4vw, 48px) 80px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 60px", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <Eyebrow label="Our Work" />
           <h1 style={{ fontSize: "clamp(48px, 8vw, 120px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.88, marginBottom: 40 }}>
@@ -144,7 +144,7 @@ export default function WorkPage() {
       </section>
 
       {/* GRID */}
-      <section style={{ padding: "0 clamp(20px, 4vw, 48px) 120px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1400, margin: "0 auto" }}>
         <AnimatePresence mode="popLayout">
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 20 }}>
             {filtered.map((p, i) => (
@@ -164,7 +164,7 @@ export default function WorkPage() {
       </section>
 
       {/* CTA */}
-      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "100px clamp(20px, 4vw, 48px)" }}>
+      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 40 }}>
             <div>

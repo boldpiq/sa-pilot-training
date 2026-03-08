@@ -26,7 +26,7 @@ export default function ContactPage() {
 
       <div style={{ position: "relative", zIndex: 1 }}>
         {/* HERO */}
-        <section style={{ padding: "160px clamp(20px, 4vw, 48px) 60px", maxWidth: 1400, margin: "0 auto" }}>
+        <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 40px", maxWidth: 1400, margin: "0 auto" }}>
           <ScrollReveal effect="fade-up">
             <Eyebrow label="Get Started" />
             <h1 style={{ fontSize: "clamp(48px, 8vw, 120px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.88, marginBottom: 32 }}>
@@ -39,7 +39,7 @@ export default function ContactPage() {
         </section>
 
         {/* FORM + INFO */}
-        <section style={{ padding: "0 clamp(20px, 4vw, 48px) 120px", maxWidth: 1400, margin: "0 auto" }}>
+        <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1400, margin: "0 auto" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 100px)", alignItems: "start" }}>
 
             {/* Left — info */}
@@ -119,8 +119,8 @@ export default function ContactPage() {
                   <input placeholder="Email address" type="email" style={inputStyle} />
                   <input placeholder="Business name" style={inputStyle} />
                   <input placeholder="Website URL (if you have one)" style={inputStyle} />
-                  <select style={{ ...inputStyle, appearance: "none" }}>
-                    <option value="" disabled selected>Service you&rsquo;re interested in</option>
+                  <select defaultValue="" style={{ ...inputStyle, appearance: "none" }}>
+                    <option value="" disabled>Service you&rsquo;re interested in</option>
                     <option>Web Design</option>
                     <option>Web Development</option>
                     <option>Brand Identity</option>

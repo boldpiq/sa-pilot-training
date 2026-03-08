@@ -30,7 +30,7 @@ export default function AboutPage() {
     <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
 
       {/* HERO */}
-      <section style={{ padding: "160px clamp(20px, 4vw, 48px) 80px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 60px", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <Eyebrow label="About" />
           <h1 style={{ fontSize: "clamp(48px, 8vw, 120px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.88, marginBottom: 40 }}>
@@ -45,7 +45,7 @@ export default function AboutPage() {
       </section>
 
       {/* STORY */}
-      <section style={{ padding: "0 clamp(20px, 4vw, 48px) 100px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1400, margin: "0 auto" }}>
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 120px)", alignItems: "start" }}>
           <ScrollReveal effect="fade-up">
             <Eyebrow label="Our Story" />
@@ -92,7 +92,7 @@ export default function AboutPage() {
       </div>
 
       {/* VALUES */}
-      <section style={{ padding: "100px clamp(20px, 4vw, 48px)", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <Eyebrow label="Values" />
           <h2 style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92, marginBottom: 64 }}>
@@ -113,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* STACK */}
-      <section style={{ padding: "0 clamp(20px, 4vw, 48px) 100px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ padding: "clamp(32px, 4vw, 64px)", border: `1px solid ${BORDER}`, borderRadius: 24, background: `linear-gradient(135deg, rgba(196,84,26,0.06) 0%, ${SURFACE} 100%)` }}>
             <Eyebrow label="Our Stack" />
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "100px clamp(20px, 4vw, 48px)" }}>
+      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 40 }}>
             <h2 style={{ fontSize: "clamp(32px, 4vw, 64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>

@@ -64,7 +64,7 @@ export default function ServicesPage() {
     <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
 
       {/* HERO */}
-      <section style={{ padding: "160px clamp(20px, 4vw, 48px) 80px", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 60px", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <Eyebrow label="Services" />
           <h1 style={{ fontSize: "clamp(48px, 8vw, 120px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.88, marginBottom: 40 }}>
@@ -88,7 +88,7 @@ export default function ServicesPage() {
       </section>
 
       {/* INCLUDED IN EVERY PROJECT */}
-      <section style={{ padding: "120px clamp(20px, 4vw, 48px)", maxWidth: 1400, margin: "0 auto" }}>
+      <section style={{ padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)", maxWidth: 1400, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ padding: "clamp(32px, 4vw, 64px)", border: `1px solid ${BORDER}`, borderRadius: 24, background: SURFACE }}>
             <Eyebrow label="Always included" />
@@ -116,7 +116,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section style={{ padding: "0 clamp(20px, 4vw, 48px) 120px", maxWidth: 800, margin: "0 auto" }}>
+      <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 800, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <Eyebrow label="FAQ" />
           <h2 style={{ fontSize: "clamp(28px, 3vw, 48px)", fontWeight: 900, letterSpacing: "-0.04em", marginBottom: 48 }}>
@@ -153,7 +153,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "100px clamp(20px, 4vw, 48px)" }}>
+      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)" }}>
         <ScrollReveal effect="scale">
           <div style={{ maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
             <h2 style={{ fontSize: "clamp(36px, 5vw, 80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92, marginBottom: 32 }}>
@@ -214,7 +214,7 @@ function ServiceRow({ service, index }: { service: typeof services[0]; index: nu
       >
         <div
           className="grid grid-cols-1 md:grid-cols-2"
-          style={{ gap: 48, padding: "0 clamp(24px, 3vw, 40px) clamp(28px, 3vw, 44px)", borderTop: `1px solid ${BORDER}`, paddingTop: 40 }}
+          style={{ gap: 48, padding: "clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) clamp(28px, 3vw, 44px)", borderTop: `1px solid ${BORDER}` }}
         >
           <div>
             <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.75, marginBottom: 32 }}>{service.description}</p>
