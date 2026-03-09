@@ -5,6 +5,7 @@ import { PageTransition } from "@/components/transitions/PageTransition"
 import { Navigation } from "@/components/layout/Navigation"
 import { CookieConsent } from "@/components/ui/CookieConsent"
 import { ScrollToTop } from "@/components/ui/ScrollToTop"
+import { GHLChatWidget } from "@/components/ui/GHLChatWidget"
 import Script from "next/script"
 import "./globals.css"
 import "../styles/tokens.css"
@@ -194,18 +195,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
 
-        {/* GHL Chat Widget */}
-        <div
-          data-chat-widget=""
-          data-widget-id="68c905cf1c15b470ad4f3a1b"
-          data-location-id="2YVSGppZ3t1nNSl74HPu"
-        />
-        <Script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="68c905cf1c15b470ad4f3a1b"
-          strategy="lazyOnload"
-        />
+        {/* GHL Chat Widget — injected outside React tree to prevent DOM reconciliation errors */}
+        <GHLChatWidget />
       </body>
     </html>
   )
