@@ -85,7 +85,7 @@ Portability – Receive your data in a structured, machine-readable format.
 Objection – Object to processing based on legitimate interests or for direct marketing.
 Opt-Out (CCPA) – Opt out of the sale of personal information (we do not sell data).
 
-To exercise any of these rights, please contact us at private@boldpiq.com.`,
+To exercise any of these rights, please contact us at support@boldpiq.com.`,
   },
   {
     title: "10. Cookies",
@@ -105,7 +105,7 @@ To exercise any of these rights, please contact us at private@boldpiq.com.`,
   },
   {
     title: "14. Contact",
-    body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: private@boldpiq.com\nWebsite: www.boldpiq.com",
+    body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com",
   },
 ]
 

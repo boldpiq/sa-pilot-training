@@ -43,7 +43,7 @@ export default function PAIAPage() {
               },
               {
                 title: "3. Information Officer",
-                body: "Name: Monique E.\nAddress: Private Bag X2, Century City, 7435, South Africa\nContact: private@boldpiq.com",
+                body: "Name: Monique E.\nAddress: Private Bag X2, Century City, 7435, South Africa\nContact: support@boldpiq.com",
               },
               {
                 title: "4. Guide to PAIA",

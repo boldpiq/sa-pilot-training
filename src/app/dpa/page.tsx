@@ -93,7 +93,7 @@ Payment processors – billing and transaction handling.
 
 BoldPiq will ensure each Sub-Processor provides data protection at least equivalent to this DPA.
 
-A list of current Sub-Processors is available upon written request to private@boldpiq.com.
+A list of current Sub-Processors is available upon written request to support@boldpiq.com.
 
 Client consents to BoldPiq's use of such Sub-Processors.`,
             },
@@ -144,7 +144,7 @@ BoldPiq will provide reasonable assistance for Client to meet its CCPA/CPRA obli
               body: `Questions or requests relating to this DPA, Sub-Processors, or Data Subject rights should be directed to:
 
 BoldPiq – Data Protection Contact
-private@boldpiq.com`,
+support@boldpiq.com`,
             },
             {
               title: "14. Order of Precedence; Amendments",

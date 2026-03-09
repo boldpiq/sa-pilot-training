@@ -83,13 +83,13 @@ Non-Refundable Deposits: The 50% deposit is non-refundable unless BoldPiq fails 
 
 Milestone Payments: Payments for completed milestones are non-refundable unless Deliverables materially fail to meet the SOW specifications, subject to the warranty in Section 7.2.
 
-Cancellation by Client: Client may cancel within 7 days of entering this agreement, unless services have begun or are custom, per Section 4.2. Outside this period, cancellation requires written notice to private@boldpiq.com, with Client liable for: (a) work performed to date, (b) non-cancellable third-party commitments (e.g., licenses, hosting), and (c) a 10% administrative close-out fee on the remaining project value, unless otherwise specified in the SOW.
+Cancellation by Client: Client may cancel within 7 days of entering this agreement, unless services have begun or are custom, per Section 4.2. Outside this period, cancellation requires written notice to support@boldpiq.com, with Client liable for: (a) work performed to date, (b) non-cancellable third-party commitments (e.g., licenses, hosting), and (c) a 10% administrative close-out fee on the remaining project value, unless otherwise specified in the SOW.
 
 Cancellation by BoldPiq: BoldPiq may cancel for Client's material breach (e.g., non-payment, failure to provide materials) after 10 business days' notice to cure, with Client liable for work performed and commitments.
 
 Prorated Refunds: Refunds for incomplete work are at BoldPiq's discretion, excluding non-refundable deposits and commitments.
 
-Process: Refund requests must be submitted to private@boldpiq.com with details of the issue. BoldPiq will respond within 5 business days.
+Process: Refund requests must be submitted to support@boldpiq.com with details of the issue. BoldPiq will respond within 5 business days.
 
 4.2. Statutory Cooling-Off (Electronic Transactions): Clients may cancel within 7 days of entering this agreement, unless services have begun or are custom, in accordance with ECTA s44. This cooling-off right applies to qualifying electronic transactions with Consumers, subject to statutory exceptions.
 
@@ -141,7 +141,7 @@ Process: Refund requests must be submitted to private@boldpiq.com with details o
                 title: "10. Compliance & Data Protection",
                 body: `10.1. Applicable Laws: Each party must comply with applicable data protection laws, including South Africa's Protection of Personal Information Act (POPIA), UK GDPR and Data Protection Act 2018, and California's Consumer Privacy Act (CCPA/CPRA).
 10.2. Privacy Policy: BoldPiq's processing of personal data is detailed in its Privacy Policy and Cookie Policy. If BoldPiq processes Client Personal Data as a processor, the Data Processing Addendum (DPA) applies.
-10.3. Data Processing Addendum: If BoldPiq processes Client personal data as a processor, the Data Processing Addendum (DPA), available at dpa or via email request to private@boldpiq.com, applies, including provisions for sub-processors, security measures, and data subject rights.
+10.3. Data Processing Addendum: If BoldPiq processes Client personal data as a processor, the Data Processing Addendum (DPA), available at dpa or via email request to support@boldpiq.com, applies, including provisions for sub-processors, security measures, and data subject rights.
 10.4. Sub-Processors: BoldPiq may use sub-processors (e.g., Third-Party Tools) with Client consent as specified in the DPA.
 10.5. Security Measures: BoldPiq will implement reasonable technical and organizational measures to protect personal data, including adherence to data minimization principles by collecting only necessary data, in accordance with POPIA, UK GDPR, and CCPA/CPRA.
 10.6. Breach Notification:
@@ -151,7 +151,7 @@ Process: Refund requests must be submitted to private@boldpiq.com with details o
 10.7. Data Transfers: For international transfers—(a) UK data: use the UK International Data Transfer Agreement (IDTA) or UK Addendum; (b) EU/EEA data: use EU Standard Contractual Clauses (Commission Implementing Decision (EU) 2021/914); (c) POPIA: apply appropriate safeguards for cross-border transfers to sub-processors.
 10.8. Data Subject Requests: BoldPiq will assist Client with data subject requests (e.g., access, deletion) as required by POPIA, UK GDPR, and CCPA/CPRA, subject to reasonable costs.
 10.9. Client Compliance: Client must not use Services in violation of applicable marketing, consumer, or privacy laws, including direct marketing regulations under POPIA, UK GDPR, and anti-spam laws such as the US CAN-SPAM Act. BoldPiq does not sell personal data as defined under CCPA/CPRA.
-10.10. Cookie Policy: Use of cookies and similar technologies on our website is governed by our Cookie Policy, available at www.boldpiq.com/cookie-policy or via email request to private@boldpiq.com, in compliance with POPIA, UK GDPR ePrivacy Directive, and CCPA/CPRA.
+10.10. Cookie Policy: Use of cookies and similar technologies on our website is governed by our Cookie Policy, available at www.boldpiq.com/cookie-policy or via email request to support@boldpiq.com, in compliance with POPIA, UK GDPR ePrivacy Directive, and CCPA/CPRA.
 10.11. Sub-Processor Transparency: Where BoldPiq acts as processor, it will give advance notice of material sub-processor changes and allow reasonable, documented objections related to data-protection risk.
 10.12. Marketing Records: Consent/opt-out logs may be retained in Third-Party Tools for audit, subject to the DPA and agreed retention limits.`,
               },
@@ -200,14 +200,14 @@ Process: Refund requests must be submitted to private@boldpiq.com with details o
 17.2. Severability: If any provision is held invalid or unenforceable, the remaining provisions remain in full force.
 17.3. Waiver: No waiver of any term is effective unless in writing and signed by the waiving party.
 17.4. Assignment: Neither party may assign this agreement without the other's written consent, except in the case of a merger or acquisition. BoldPiq will provide notice to Client of any such assignment.
-17.5. Notices: All notices must be in writing and sent via email (to private@boldpiq.com for BoldPiq or the Client's contact details in the SOW/Order Form) or registered mail to the addresses provided.
+17.5. Notices: All notices must be in writing and sent via email (to support@boldpiq.com for BoldPiq or the Client's contact details in the SOW/Order Form) or registered mail to the addresses provided.
 17.6. Electronic Communications & Signatures: Electronic signatures and click-wrap/tick-box acceptance have legal force under ECTA s13, except where an advanced electronic signature is legally required.
 17.7. No Agency: BoldPiq acts as an independent contractor; nothing creates a partnership, joint venture, or employment relationship.
 17.8. Consumer-Specific Terms: If any Consumer-specific clause is inapplicable to a transaction, it is severed without affecting the remainder.`,
               },
               {
                 title: "18. Contact",
-                body: `For questions, contact us at:\nEmail: private@boldpiq.com\nWebsite: www.boldpiq.com\nPhysical Address: No. 2 Chestnut Street, Thornton, 7460, South Africa`,
+                body: `For questions, contact us at:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com\nPhysical Address: No. 2 Chestnut Street, Thornton, 7460, South Africa`,
               },
             ].map(section => (
               <div key={section.title} style={SectionStyle}>
@@ -295,7 +295,7 @@ Portability – Receive your data in a structured, machine-readable format.
 Objection – Object to processing based on legitimate interests or for direct marketing.
 Opt-Out (CCPA) – Opt out of the sale of personal information (we do not sell data).
 
-To exercise any of these rights, please contact us at private@boldpiq.com.`,
+To exercise any of these rights, please contact us at support@boldpiq.com.`,
               },
               {
                 title: "10. Cookies",
@@ -315,7 +315,7 @@ To exercise any of these rights, please contact us at private@boldpiq.com.`,
               },
               {
                 title: "14. Contact",
-                body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: private@boldpiq.com\nWebsite: www.boldpiq.com",
+                body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com",
               },
             ].map(section => (
               <div key={"pp-" + section.title} style={SectionStyle}>
@@ -336,7 +336,7 @@ To exercise any of these rights, please contact us at private@boldpiq.com.`,
               },
               {
                 title: "2. Information Officer",
-                body: "BoldPiq has appointed an Information Officer responsible for ensuring compliance with POPIA. The Information Officer can be contacted at private@boldpiq.com.",
+                body: "BoldPiq has appointed an Information Officer responsible for ensuring compliance with POPIA. The Information Officer can be contacted at support@boldpiq.com.",
               },
               {
                 title: "3. Lawful Processing",
@@ -374,7 +374,7 @@ Right to data portability.
 Right to object to processing.
 Rights related to automated decision-making and profiling.
 
-To exercise these rights, contact private@boldpiq.com. You may also lodge a complaint with your local data protection authority.`,
+To exercise these rights, contact support@boldpiq.com. You may also lodge a complaint with your local data protection authority.`,
               },
               {
                 title: "8. U.S. Privacy Compliance (CCPA/CPRA)",
@@ -387,7 +387,7 @@ Right to non-discrimination for exercising your privacy rights.
 Right to correct inaccurate personal information.
 Right to limit the use of sensitive personal information.
 
-To submit a request, contact private@boldpiq.com.`,
+To submit a request, contact support@boldpiq.com.`,
               },
               {
                 title: "9. Data Minimization",
@@ -417,14 +417,14 @@ Under CCPA/CPRA, we will notify affected California residents in the most expedi
                 title: "14. Complaints",
                 body: `If you believe your personal information has been processed unlawfully, you may:
 
-Contact our Information Officer at private@boldpiq.com.
+Contact our Information Officer at support@boldpiq.com.
 Lodge a complaint with the Information Regulator of South Africa (for POPIA).
 Lodge a complaint with your national data protection authority (for GDPR/UK GDPR).
 Contact the California Attorney General's office (for CCPA/CPRA).`,
               },
               {
                 title: "15. Contact for Privacy & Compliance",
-                body: "For all privacy, POPIA, GDPR, or U.S. privacy-related queries:\nEmail: private@boldpiq.com\nWebsite: www.boldpiq.com",
+                body: "For all privacy, POPIA, GDPR, or U.S. privacy-related queries:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com",
               },
             ].map(section => (
               <div key={"popia-" + section.title} style={SectionStyle}>
@@ -479,7 +479,7 @@ Please note that disabling certain cookies may impact the functionality of our w
               },
               {
                 title: "7. Contact",
-                body: "For any questions or concerns regarding these Terms of Service, Privacy Policy, or our compliance with POPIA, GDPR/UK GDPR, or applicable U.S. privacy laws, please contact us at:\nEmail: private@boldpiq.com\nWebsite: www.boldpiq.com",
+                body: "For any questions or concerns regarding these Terms of Service, Privacy Policy, or our compliance with POPIA, GDPR/UK GDPR, or applicable U.S. privacy laws, please contact us at:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com",
               },
             ].map(section => (
               <div key={"cookie-" + section.title} style={SectionStyle}>
