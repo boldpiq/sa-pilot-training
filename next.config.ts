@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.leadconnectorhq.com https://*.gohighlevel.com https://link.zip360.co.za https://js.hs-scripts.com https://cdn.socket.io https://challenges.cloudflare.com https://www.google.com https://www.gstatic.com https://recaptcha.google.com",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.leadconnectorhq.com https://*.gohighlevel.com https://link.zip360.co.za https://js.hs-scripts.com https://cdn.socket.io https://challenges.cloudflare.com https://www.google.com https://www.gstatic.com https://recaptcha.google.com https://static.cloudflareinsights.com",
               "style-src 'self' 'unsafe-inline' https://*.leadconnectorhq.com https://*.gohighlevel.com https://fonts.bunny.net https://www.gstatic.com",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data: https://*.leadconnectorhq.com https://fonts.bunny.net https://www.gstatic.com",
