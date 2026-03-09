@@ -74,6 +74,21 @@ export function GHLBookingWidget({
     }
   }, [deferLoad, src])
 
+  // Sync container height when form_embed.js directly sets iframe inline style height
+  useEffect(() => {
+    const iframe = iframeRef.current
+    if (!iframe) return
+    const mo = new MutationObserver(() => {
+      const inlineH = parseFloat(iframe.style.height)
+      if (!isNaN(inlineH) && inlineH > 200) {
+        setHeight(h => Math.max(h, inlineH))
+        iframe.style.height = "100%"
+      }
+    })
+    mo.observe(iframe, { attributes: true, attributeFilter: ["style"] })
+    return () => mo.disconnect()
+  }, [])
+
   useEffect(() => {
     const handleMessage = (e: MessageEvent) => {
       if (!e.data) return
