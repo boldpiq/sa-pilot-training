@@ -463,19 +463,17 @@ export default function Home() {
             
           </ScrollReveal>
 
-          <ScrollReveal effect="fade-up" delay={0.12}>
-            <GHLBookingWidget
-              src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
-              id="2iYXsaTBfL5b7Y870XVX_home"
-              title="Book a Discovery Call"
-              defaultHeight={700}
-              borderRadius={24}
-              border={`1px solid ${BORDER}`}
-              background={SURFACE}
-              redirectTo="/thank-you"
-              deferLoad
-            />
-          </ScrollReveal>
+          <GHLBookingWidget
+            src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
+            id="2iYXsaTBfL5b7Y870XVX_home"
+            title="Book a Discovery Call"
+            defaultHeight={700}
+            borderRadius={24}
+            border={`1px solid ${BORDER}`}
+            background={SURFACE}
+            redirectTo="/thank-you"
+            deferLoad
+          />
         </div>
       </Section>
 
