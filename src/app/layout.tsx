@@ -188,7 +188,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* GHL Booking & Form Embed Script (global — required for all booking widgets) */}
         <Script
           src="https://link.zip360.co.za/js/form_embed.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
 
         {/* GHL Chat Widget */}
