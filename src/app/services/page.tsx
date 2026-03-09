@@ -3,6 +3,7 @@ import { useState } from "react"
 import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import Link from "next/link"
+import { Footer } from "@/components/layout/Footer"
 
 const BG = "#0B0F1C"
 const ACCENT = "#C4541A"
@@ -51,7 +52,7 @@ const services = [
 
 const faqs = [
   { q: "How long does a project take?", a: "Most websites are live within 6 weeks of the brief. Brand identity projects typically run 2–3 weeks. Timelines are agreed upfront — we don't move goalposts." },
-  { q: "Do you work with businesses outside Australia?", a: "Yes. We work with clients across Australia, the UK, US, and beyond. All projects are managed remotely with clear communication every step of the way." },
+  { q: "Do you work with businesses outside South Africa?", a: "Yes. We work with clients across Australia, the UK, US, and beyond. All projects are managed remotely with clear communication every step of the way." },
   { q: "What do you need from me to get started?", a: "A brief call to understand your business, goals, and audience. We handle the rest and come back with a clear plan before any money changes hands." },
   { q: "Will I own the website and brand assets?", a: "Absolutely. Everything we create is yours — full ownership of all files, code, and assets. No lock-in, no ongoing licence fees." },
   { q: "Can you connect my website to my existing tools?", a: "Yes. We integrate with GHL CRM, Calendly, booking software, and most major tools. Ask us about your specific stack." },
@@ -97,7 +98,7 @@ export default function ServicesPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3" style={{ gap: 32 }}>
               {[
-                { icon: "⚡", title: "Sub-second load times", desc: "Every site we ship scores 95+ on Google Lighthouse." },
+                { icon: "⚡", title: "Sub-second load times", desc: "Speedy load times." },
                 { icon: "📱", title: "Mobile-first design", desc: "Pixel-perfect on every screen, every browser." },
                 { icon: "🔒", title: "Security hardened", desc: "CSP headers, HTTPS, no exposed secrets — ever." },
                 { icon: "🤖", title: "GEO optimised", desc: "Structured to be cited by ChatGPT, Perplexity, and Google AI." },
@@ -178,6 +179,7 @@ export default function ServicesPage() {
         </ScrollReveal>
       </div>
 
+      <Footer />
     </main>
   )
 }

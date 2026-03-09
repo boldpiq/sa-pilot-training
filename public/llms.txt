@@ -1,0 +1,46 @@
+# Boldpiq — Web Design & Development Agency
+
+> Boldpiq crafts high-performance websites and graphics that captivate audiences and drive business growth for ambitious brands across South Africa and beyond.
+
+## About
+
+Boldpiq is a South African web design and development agency specialising in custom website design, Next.js development, brand identity, e-commerce, and GEO-optimised digital experiences. We build websites that attract, convert, and retain customers — engineered for businesses that refuse to blend in.
+
+## Core Services
+
+- **Web Design** — Award-worthy UI/UX designs built in Figma with motion design and responsive layouts
+- **Web Development** — Fast, secure Next.js websites optimised for Core Web Vitals, AI search (GEO), and conversion
+- **Brand Identity** — Visual systems that command attention: logo, typography, colour, and full brand guidelines
+- **E-Commerce Development** — Custom Shopify and headless commerce solutions
+- **Digital Marketing** — Email, SMS, paid ads, and social media campaigns via GHL CRM
+
+## Key Pages
+
+- [Home](https://www.boldpiq.com/) — Overview of services, work, and process
+- [Services](https://www.boldpiq.com/services) — Full service offerings and packages
+- [Work](https://www.boldpiq.com/work) — Portfolio of completed projects
+- [About](https://www.boldpiq.com/about) — Agency story and team
+- [Contact / Book Discovery Call](https://www.boldpiq.com/contact) — Free 30-minute discovery call booking
+- [Book 45-Min Appointment](https://www.boldpiq.com/contact45min) — 45-minute strategy session for clients
+- [Refund Policy](https://www.boldpiq.com/refund) — Refund and cancellation terms
+
+## Location & Coverage
+
+- Based in South Africa
+- Services: South Africa, Western Cape, Cape Town, Johannesburg, Pretoria — and international clients
+- Remote-first agency
+
+## Social Profiles
+
+- Instagram: https://www.instagram.com/boldpiq/
+- Facebook: https://www.facebook.com/boldpiq
+- LinkedIn: https://www.linkedin.com/company/boldpiq/
+- Pinterest: https://za.pinterest.com/boldpiq/
+
+## Legal
+
+- Privacy Policy: https://www.boldpiq.com/privacy
+- Terms of Service: https://www.boldpiq.com/terms
+- DPA: https://www.boldpiq.com/dpa
+- PAIA Manual: https://www.boldpiq.com/paia
+- Refund Policy: https://www.boldpiq.com/refund

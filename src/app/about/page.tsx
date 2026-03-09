@@ -2,6 +2,7 @@
 import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import Link from "next/link"
+import { Footer } from "@/components/layout/Footer"
 
 const BG = "#0B0F1C"
 const ACCENT = "#C4541A"
@@ -164,6 +165,7 @@ export default function AboutPage() {
         </ScrollReveal>
       </div>
 
+      <Footer />
     </main>
   )
 }

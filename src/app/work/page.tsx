@@ -1,13 +1,14 @@
 "use client"
 import { useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import Link from "next/link"
+import Image from "next/image"
+import { Footer } from "@/components/layout/Footer"
 
 const BG = "#0B0F1C"
 const ACCENT = "#C4541A"
 const MUTED = "rgba(255,255,255,0.45)"
-const SURFACE = "rgba(255,255,255,0.05)"
 const BORDER = "rgba(255,255,255,0.08)"
 
 function Eyebrow({ label }: { label: string }) {
@@ -22,76 +23,81 @@ function Eyebrow({ label }: { label: string }) {
 const projects = [
   {
     id: 1,
-    tag: "Web Design · Development",
+    tag: "Website Development",
     category: "Web",
-    client: "Apex Financial",
-    title: "Premium financial services brand that converts cold traffic into booked calls",
-    outcome: "2.8× increase in qualified leads within 60 days of launch",
-    year: "2025",
-    gradient: "linear-gradient(135deg, #1a1f35 0%, #0d1117 100%)",
-    accent: ACCENT,
-    url: "https://www.boldpiq.com/work",
+    client: "White & Sons Panel Beaters",
+    title: "Family-owned panel beating & renovation business brought online with a professional, credibility-building presence",
+    outcome: "Enhanced brand credibility and improved client inquiries through word-of-mouth referrals",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6899e583ccc96cbf93ffaae8.png",
+    testimonial: null,
+    caseStudyUrl: "/work/case-whitesons",
   },
   {
     id: 2,
-    tag: "Brand Identity · Web",
-    category: "Brand",
-    client: "Elevate Coaching",
-    title: "Full rebrand and web launch for a scaling coaching business",
-    outcome: "94% of new leads now arrive through the website",
-    year: "2025",
-    gradient: `linear-gradient(135deg, rgba(196,84,26,0.2) 0%, #0d1117 100%)`,
-    accent: "#fff",
-    url: "https://www.boldpiq.com/work",
+    tag: "Website Design & Development",
+    category: "Web",
+    client: "Bright Haven Barrydale",
+    title: "Warm, child-friendly platform for a neurodiverse youth non-profit — built to drive donations and volunteer sign-ups",
+    outcome: "Increased volunteer sign-ups and donations through an accessible, emotive online presence",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6899ec40af2898269f570db8.png",
+    testimonial: null,
+    caseStudyUrl: "/work/case-bright-haven",
   },
   {
     id: 3,
-    tag: "Web Development",
+    tag: "Website Development",
     category: "Web",
-    client: "Meridian Legal",
-    title: "High-trust law firm website built to command authority and drive enquiries",
-    outcome: "3.1× increase in contact form submissions in 90 days",
-    year: "2024",
-    gradient: "linear-gradient(135deg, #0f1a2e 0%, #0B0F1C 100%)",
-    accent: ACCENT,
-    url: "https://www.boldpiq.com/work",
+    client: "The Cherri Chilli",
+    title: "Mobile-first restaurant site with WhatsApp ordering integration and story-driven brand presence",
+    outcome: "Seamless ordering experience and a digital presence that matched the quality of the food",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6899d8a51636d2692d99f396.png",
+    testimonial: "Her commitment to quality and her ability to capture the spirit of our brand in every aspect of the site… highly recommend her services.",
+    caseStudyUrl: "/work/case-the-cherri-chilli",
   },
   {
     id: 4,
-    tag: "Brand Identity",
-    category: "Brand",
-    client: "Vance & Co.",
-    title: "Complete visual identity system for a boutique management consultancy",
-    outcome: "Brand signed off in one round — zero revisions",
-    year: "2024",
-    gradient: `linear-gradient(135deg, rgba(196,84,26,0.12) 0%, #0d1117 100%)`,
-    accent: "#fff",
-    url: "https://www.boldpiq.com/work",
+    tag: "Website Development",
+    category: "Web",
+    client: "Net Vir Pret",
+    title: "Central communication hub for a community arts & education org — giving sponsors and donors a reason to engage",
+    outcome: "Stronger local engagement with 19 students in tertiary education showcased as proof of impact",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6899e8d622c2333c8710e223.png",
+    testimonial: "We are very fortunate to have Monique develop a website and would recommend her to anyone.",
+    caseStudyUrl: "/work/case-netvirpret",
   },
   {
     id: 5,
-    tag: "Web Design · Development",
-    category: "Web",
-    client: "Northside Physio",
-    title: "Clean, conversion-focused health practice site connected to booking software",
-    outcome: "Online bookings up 4× in the first month",
-    year: "2024",
-    gradient: "linear-gradient(135deg, #111827 0%, #0B0F1C 100%)",
-    accent: ACCENT,
-    url: "https://www.boldpiq.com/work",
+    tag: "Logo Design",
+    category: "Brand",
+    client: "Dr. Eleanor O'Sullivan — EOS Coaching",
+    title: "Minimalist EOS initials logo communicating trust, clarity, and professional approachability",
+    outcome: "A complete game-changer for my coaching business — visually stunning but also user-friendly.",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6811d86233fee4bdd24943b2.png",
+    imageFit: "contain" as const,
+    testimonial: "A complete game-changer for my coaching business… visually stunning but also user-friendly.",
+    caseStudyUrl: null,
+    externalUrl: "https://www.eleanorosullivan.ie/",
   },
   {
     id: 6,
-    tag: "Brand Identity · Web",
-    category: "Web",
-    client: "Orion Properties",
-    title: "Luxury real estate brand and property showcase website",
-    outcome: "Average enquiry quality improved — more pre-qualified buyers",
-    year: "2024",
-    gradient: `linear-gradient(135deg, rgba(196,84,26,0.16) 0%, #0d1117 100%)`,
-    accent: "#fff",
-    url: "https://www.boldpiq.com/work",
+    tag: "Branding & Identity",
+    category: "Brand",
+    client: "Net Vir Pret",
+    title: "Bold typographic WW identity system — two logo concepts built for elegance and instant recall",
+    outcome: "Clean, minimal identity that projects professionalism and approachability at first glance",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/67a701b82329022f993ccc0a.png",
+    imageFit: "contain" as const,
+    imageScale: 1.25,
+    testimonial: null,
+    caseStudyUrl: null,
   },
+]
+
+const promoVideos = [
+  { id: "9rOgtJE02DQ", thumb: "https://img.youtube.com/vi/9rOgtJE02DQ/maxresdefault.jpg" },
+  { id: "rfIz2HxMitE", thumb: "https://img.youtube.com/vi/rfIz2HxMitE/maxresdefault.jpg" },
+  { id: "3f91eR62eFc", thumb: "https://img.youtube.com/vi/3f91eR62eFc/maxresdefault.jpg" },
+  { id: "AJlNGTXM-NE", thumb: "https://img.youtube.com/vi/AJlNGTXM-NE/maxresdefault.jpg" },
 ]
 
 const filters = ["All", "Web", "Brand"]
@@ -111,7 +117,7 @@ export default function WorkPage() {
             Proof in<br /><span style={{ color: ACCENT }}>Results.</span>
           </h1>
           <p style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: MUTED, maxWidth: 560, lineHeight: 1.65 }}>
-            Every project we ship is measured against one thing — does it grow the business? Here&rsquo;s the evidence.
+            Real clients. Real outcomes. Every project measured against one thing — does it grow the business?
           </p>
         </ScrollReveal>
 
@@ -134,6 +140,7 @@ export default function WorkPage() {
                   cursor: "pointer",
                   fontFamily: "inherit",
                   letterSpacing: "-0.01em",
+                  transition: "all 0.2s ease",
                 }}
               >
                 {f}
@@ -143,25 +150,71 @@ export default function WorkPage() {
         </ScrollReveal>
       </section>
 
-      {/* GRID */}
+      {/* PROJECT GRID */}
       <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1400, margin: "0 auto" }}>
-        <AnimatePresence mode="popLayout">
-          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 20 }}>
+        {active === "All" ? (
+          <>
+            {[{ label: "Website Projects", cat: "Web" }, { label: "Branding & Identity", cat: "Brand" }].map(group => {
+              const groupProjects = projects.filter(p => p.category === group.cat)
+              return (
+                <div key={group.cat} style={{ marginBottom: 64 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 32 }}>
+                    <span style={{ width: 32, height: 1, background: ACCENT, flexShrink: 0 }} />
+                    <span style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: MUTED }}>{group.label}</span>
+                    <span style={{ flex: 1, height: 1, background: BORDER }} />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
+                    {groupProjects.map((p, i) => (
+                      <motion.div
+                        key={p.id}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: i * 0.06 }}
+                      >
+                        <ProjectCard project={p} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
             {filtered.map((p, i) => (
               <motion.div
                 key={p.id}
-                layout
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 24 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
               >
                 <ProjectCard project={p} />
               </motion.div>
             ))}
           </div>
-        </AnimatePresence>
+        )}
       </section>
+
+      {/* PROMO VIDEOS */}
+      {(active === "All" || active === "Web") && (
+        <section style={{ padding: "0 clamp(20px, 4vw, 48px) clamp(80px, 10vw, 120px)", maxWidth: 1400, margin: "0 auto" }}>
+          <ScrollReveal effect="fade-up">
+            <div style={{ marginBottom: 40 }}>
+              <Eyebrow label="Promo Videos" />
+              <h2 style={{ fontSize: "clamp(28px, 3.5vw, 52px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>
+                See the work<br /><span style={{ color: ACCENT }}>in action.</span>
+              </h2>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 20 }}>
+            {promoVideos.map((v, i) => (
+              <ScrollReveal key={v.id} effect="fade-up" delay={i * 0.08}>
+                <VideoCard videoId={v.id} thumb={v.thumb} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <div style={{ borderTop: `1px solid ${BORDER}`, padding: "clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px)" }}>
@@ -188,47 +241,123 @@ export default function WorkPage() {
         </ScrollReveal>
       </div>
 
+      <Footer />
     </main>
   )
 }
 
 function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [hovered, setHovered] = useState(false)
+
+  const card = (
+    <motion.div
+      animate={{ scale: hovered ? 1.015 : 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 28 }}
+      style={{ borderRadius: 20, overflow: "hidden", background: "#111520", border: `1px solid ${BORDER}`, display: "flex", flexDirection: "column" }}
+    >
+      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "#0d1117" }}>
+        <Image
+          src={project.image}
+          alt={project.client}
+          fill
+          style={{ objectFit: project.imageFit ?? "cover", objectPosition: project.imageFit === "contain" ? "center" : "top", transition: "transform 0.5s ease", transform: `scale(${hovered ? (project.imageScale ?? 1) * 1.04 : (project.imageScale ?? 1)})` }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(11,15,28,0.5) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(196,84,26,0.12)", mixBlendMode: "multiply" }} />
+      </div>
+
+      <div style={{ padding: "16px 20px 20px", display: "flex", flexDirection: "column", gap: 8, flexGrow: 1 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span style={{ display: "inline-block", padding: "4px 14px", borderRadius: 100, background: "rgba(255,255,255,0.06)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED }}>{project.tag}</span>
+          {(project.caseStudyUrl || project.externalUrl) && (
+            <span style={{ fontSize: 12, color: ACCENT, fontWeight: 600, opacity: hovered ? 1 : 0, transition: "opacity 0.2s ease" }}>
+              {project.caseStudyUrl ? "Case Study →" : "Visit Site →"}
+            </span>
+          )}
+        </div>
+        <p style={{ fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, marginTop: 4 }}>{project.client}</p>
+        <h3 style={{ fontSize: "clamp(14px, 1.1vw, 17px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.25 }}>{project.title}</h3>
+        <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", display: "flex", alignItems: "flex-start", gap: 10 }}>
+          <span style={{ width: 7, height: 7, borderRadius: "50%", background: ACCENT, flexShrink: 0, marginTop: 5, display: "inline-block" }} />
+          {project.outcome}
+        </p>
+        {project.testimonial && (
+          <p style={{ fontSize: 13, color: MUTED, fontStyle: "italic", borderLeft: `2px solid ${ACCENT}`, paddingLeft: 12, marginTop: 4, lineHeight: 1.6 }}>
+            &ldquo;{project.testimonial}&rdquo;
+          </p>
+        )}
+      </div>
+    </motion.div>
+  )
+
+  if (project.caseStudyUrl) {
+    return (
+      <Link href={project.caseStudyUrl} style={{ display: "block", textDecoration: "none", color: "#fff" }}
+        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        {card}
+      </Link>
+    )
+  }
+  if (project.externalUrl) {
+    return (
+      <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" style={{ display: "block", textDecoration: "none", color: "#fff" }}
+        onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        {card}
+      </a>
+    )
+  }
   return (
-    <motion.a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      {card}
+    </div>
+  )
+}
+
+function VideoCard({ videoId, thumb }: { videoId: string; thumb: string }) {
+  const [playing, setPlaying] = useState(false)
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ display: "block", textDecoration: "none", color: "#fff" }}
+      style={{ borderRadius: 20, overflow: "hidden", border: `1px solid ${BORDER}`, background: "#111520", cursor: "pointer" }}
+      onClick={() => setPlaying(true)}
     >
-      <motion.div
-        animate={{ scale: hovered ? 1.015 : 1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 28 }}
-        style={{ borderRadius: 20, overflow: "hidden", background: project.gradient, padding: "48px 40px", minHeight: 380, display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative" }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-          <span style={{ display: "inline-block", padding: "4px 14px", borderRadius: 100, background: "rgba(255,255,255,0.1)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase" }}>{project.tag}</span>
-          <span style={{ color: MUTED, fontSize: 13 }}>{project.year}</span>
+      {playing ? (
+        <iframe
+          width="100%"
+          style={{ aspectRatio: "16/9", display: "block", border: "none" }}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden" }}>
+          <Image
+            src={thumb}
+            alt="Promo video"
+            fill
+            style={{ objectFit: "cover", transition: "transform 0.4s ease", transform: hovered ? "scale(1.03)" : "scale(1)" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            unoptimized
+          />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <motion.div
+              animate={{ scale: hovered ? 1.1 : 1 }}
+              style={{
+                width: 64, height: 64, borderRadius: "50%",
+                background: ACCENT,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: "0 4px 24px rgba(196,84,26,0.5)",
+              }}
+            >
+              <span style={{ fontSize: 22, marginLeft: 4 }}>▶</span>
+            </motion.div>
+          </div>
         </div>
-
-        <div>
-          <p style={{ color: MUTED, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>{project.client}</p>
-          <h3 style={{ fontSize: "clamp(20px, 2vw, 26px)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 20 }}>{project.title}</h3>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", display: "flex", alignItems: "flex-start", gap: 10 }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: ACCENT, flexShrink: 0, marginTop: 4, display: "inline-block" }} />
-            {project.outcome}
-          </p>
-        </div>
-
-        <motion.div
-          animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -8 }}
-          style={{ fontSize: 13, fontWeight: 700, color: ACCENT, marginTop: 24 }}
-        >
-          View project →
-        </motion.div>
-      </motion.div>
-    </motion.a>
+      )}
+    </div>
   )
 }

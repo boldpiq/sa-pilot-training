@@ -11,6 +11,9 @@
   --font-display: var(--font-geist), system-ui, sans-serif;
 }
 
+.footer-nav-link:hover { color: #fff !important; transition: color 0.15s ease; }
+.footer-nav-link-orange:hover { color: #C4541A !important; transition: color 0.15s ease; }
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;

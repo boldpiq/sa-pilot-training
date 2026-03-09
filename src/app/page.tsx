@@ -1,14 +1,18 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, AnimatePresence, useMotionValueEvent, useAnimationFrame } from "motion/react"
+import { motion, useScroll, useTransform, useInView, AnimatePresence, useAnimationFrame } from "motion/react"
 import { VelocityMarquee } from "@/components/scroll/VelocityMarquee"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
+import Image from "next/image"
+import { Footer } from "@/components/layout/Footer"
+import { GHLBookingWidget } from "@/components/ui/GHLBookingWidget"
 
 const BG = "#0B0F1C"
 const ACCENT = "#C4541A"
 const MUTED = "rgba(255,255,255,0.45)"
 const SURFACE = "rgba(255,255,255,0.05)"
 const BORDER = "rgba(255,255,255,0.08)"
+
 
 function Section({ id, children, style, className }: { id?: string; children: React.ReactNode; style?: React.CSSProperties; className?: string }) {
   return (
@@ -57,7 +61,8 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 function ServiceCard({ number, title, description, tags }: { number: string; title: string; description: string; tags: string[] }) {
   const [hovered, setHovered] = useState(false)
   return (
-    <motion.div
+    <motion.a
+      href="/work/"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       animate={{ borderColor: hovered ? ACCENT : BORDER }}
@@ -73,14 +78,15 @@ function ServiceCard({ number, title, description, tags }: { number: string; tit
         {tags.map(t => <span key={t} style={{ padding: "4px 14px", borderRadius: 100, border: `1px solid ${BORDER}`, fontSize: 12, color: MUTED }}>{t}</span>)}
       </div>
       <motion.div animate={{ x: hovered ? 0 : 16, opacity: hovered ? 1 : 0 }} style={{ fontSize: 13, fontWeight: 700, color: ACCENT }}>Learn more →</motion.div>
-    </motion.div>
+    </motion.a>
   )
 }
 
 function CaseCard({ tag, title, outcome, gradient }: { tag: string; title: string; outcome: string; gradient: string }) {
   const [hovered, setHovered] = useState(false)
   return (
-    <motion.div
+    <motion.a
+      href="/work/"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       animate={{ scale: hovered ? 1.02 : 1 }}
@@ -95,7 +101,7 @@ function CaseCard({ tag, title, outcome, gradient }: { tag: string; title: strin
         </p>
       </div>
       <motion.div animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -8 }} style={{ fontSize: 13, fontWeight: 700 }}>View case study →</motion.div>
-    </motion.div>
+    </motion.a>
   )
 }
 
@@ -111,94 +117,119 @@ function ProcessStep({ number, title, description }: { number: string; title: st
   )
 }
 
-// Static gradient on an oversized div — only transform changes each frame.
-// GPU-accelerated translate = zero flicker, same visual quality as hero.
 function ProcessGlow() {
   const ref1 = useRef<HTMLDivElement>(null)
   const ref2 = useRef<HTMLDivElement>(null)
   useAnimationFrame((t) => {
     if (ref1.current) {
-      const x = Math.sin(t * 0.00028) * 120
-      const y = Math.cos(t * 0.00019) * 80
+      const x = Math.sin(t * 0.00056) * 120
+      const y = Math.cos(t * 0.00038) * 80
       ref1.current.style.transform = `translate(${x}px, ${y}px)`
     }
     if (ref2.current) {
-      const x = Math.cos(t * 0.00022) * 90
-      const y = Math.sin(t * 0.00034) * 70
+      const x = Math.cos(t * 0.00044) * 90
+      const y = Math.sin(t * 0.00068) * 70
       ref2.current.style.transform = `translate(${x}px, ${y}px)`
     }
   })
   return (
     <>
-      <div
-        ref={ref1}
-        style={{
-          position: "absolute",
-          inset: -160,
-          pointerEvents: "none",
-          background: `radial-gradient(ellipse 55% 48% at 60% 40%, rgba(196,84,26,0.11) 0%, transparent 68%)`,
-          willChange: "transform",
-        }}
-      />
-      <div
-        ref={ref2}
-        style={{
-          position: "absolute",
-          inset: -120,
-          pointerEvents: "none",
-          background: `radial-gradient(ellipse 42% 38% at 38% 60%, rgba(196,84,26,0.06) 0%, transparent 62%)`,
-          willChange: "transform",
-        }}
-      />
+      <div ref={ref1} style={{ position: "absolute", inset: -160, pointerEvents: "none", background: `radial-gradient(ellipse 55% 48% at 60% 40%, rgba(196,84,26,0.11) 0%, transparent 68%)`, willChange: "transform" }} />
+      <div ref={ref2} style={{ position: "absolute", inset: -120, pointerEvents: "none", background: `radial-gradient(ellipse 42% 38% at 38% 60%, rgba(196,84,26,0.06) 0%, transparent 62%)`, willChange: "transform" }} />
     </>
   )
 }
 
-function BackToTop() {
-  const [visible, setVisible] = useState(false)
-  const { scrollY } = useScroll()
+// ── Rotating Testimonials ──────────────────────────────────────────────────
+const reviews = [
+  {
+    quote: "Her commitment to quality and her ability to capture the spirit of our brand in every aspect of the site… highly recommend her services.",
+    name: "The Cherri Chilli",
+    role: "Founder, The Cherri Chilli - Award-winning brand",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/67fa558dc7a0152ed4d48f4c.png",
+  },
+  {
+    quote: "Working with BoldPiq has been a complete game-changer for my coaching business… The website design is not only visually stunning but also user-friendly, with seamless hosting and an intuitive booking solution.",
+    name: "Dr. Eleanor O'Sullivan",
+    role: "Founder / Coach, Dr. Eleanor O'Sullivan",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/67fa5819266b6fb33c8f4005.png",
+  },
+  {
+    quote: "We are very fortunate to have had Monique develop our website and would recommend her to anyone in the process of developing a website. She did a wonderful job with our website, and we are sure that she would approach any project with the same care and attention to detail.",
+    name: "Net Vir Pret",
+    role: "Net Vir Pret, Founder - Community of Practice for Social Change",
+    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/696e1ee2436e7117cd38fc9d.webp",
+  },
+]
 
-  useMotionValueEvent(scrollY, "change", (y) => {
-    setVisible(y > 600)
-  })
+function RotatingTestimonials() {
+  const [current, setCurrent] = useState(0)
+  const [dir, setDir] = useState(1)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDir(1)
+      setCurrent(c => (c + 1) % reviews.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const go = (idx: number) => {
+    setDir(idx > current ? 1 : -1)
+    setCurrent(idx)
+  }
+
+  const review = reviews[current]
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.22 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          whileHover={{ scale: 1.12 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Back to top"
-          style={{
-            position: "fixed",
-            bottom: 28,
-            right: 28,
-            zIndex: 50,
-            width: 48,
-            height: 48,
-            borderRadius: "50%",
-            background: ACCENT,
-            border: "none",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#fff",
-            fontSize: 20,
-            fontWeight: 700,
-            fontFamily: "inherit",
-            boxShadow: "0 4px 24px rgba(196,84,26,0.45)",
-          }}
-        >
-          ↑
-        </motion.button>
-      )}
-    </AnimatePresence>
+    <div style={{ padding: "80px clamp(20px, 4vw, 48px)", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+      <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center" }}>
+        <AnimatePresence mode="wait" custom={dir}>
+          <motion.div
+            key={current}
+            custom={dir}
+            initial={{ opacity: 0, y: dir * 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: dir * -24 }}
+            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <p style={{ fontSize: "clamp(18px, 2.8vw, 34px)", fontWeight: 700, lineHeight: 1.35, letterSpacing: "-0.02em", marginBottom: 48 }}>
+              &ldquo;{review.quote}&rdquo;
+            </p>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
+              <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", flexShrink: 0, position: "relative", outline: "2px solid #C4541A", outlineOffset: "2px" }}>
+                <Image src={review.image} alt={review.name} fill style={{ objectFit: "cover" }} sizes="48px" />
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <p style={{ fontWeight: 700, fontSize: 15 }}>{review.name}</p>
+                <p style={{ color: MUTED, fontSize: 13 }}>{review.role}</p>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dot nav */}
+        <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 40 }}>
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              aria-label={`Review ${i + 1}`}
+              style={{
+                width: i === current ? 28 : 8,
+                height: 8,
+                borderRadius: 100,
+                background: i === current ? ACCENT : "rgba(255,255,255,0.2)",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                transition: "width 0.35s ease, background 0.35s ease",
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -210,8 +241,6 @@ export default function Home() {
 
   return (
     <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
-
-      <BackToTop />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section
@@ -268,8 +297,8 @@ export default function Home() {
               High-performance websites that attract, convert, and retain — engineered for businesses that refuse to blend in.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <motion.a href="#contact" whileHover={{ scale: 1.04, background: "#D4601F" }} whileTap={{ scale: 0.97 }} style={{ padding: "15px 36px", background: ACCENT, color: "#fff", borderRadius: 100, fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>Get Started</motion.a>
-              <motion.a href="#work" whileHover={{ borderColor: "rgba(255,255,255,0.3)" }} style={{ padding: "15px 36px", border: `1px solid ${BORDER}`, color: "#fff", borderRadius: 100, fontWeight: 600, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>See Our Work</motion.a>
+              <motion.a href="/contact" whileHover={{ scale: 1.04, background: "#D4601F" }} whileTap={{ scale: 0.97 }} style={{ padding: "15px 36px", background: ACCENT, color: "#fff", borderRadius: 100, fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>Get Started</motion.a>
+              <motion.a href="/work" whileHover={{ borderColor: "rgba(255,255,255,0.3)" }} style={{ padding: "15px 36px", border: `1px solid ${BORDER}`, color: "#fff", borderRadius: 100, fontWeight: 600, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>See Our Work</motion.a>
             </div>
           </motion.div>
         </motion.div>
@@ -364,11 +393,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── PROCESS (animated orb background) ────────────────────── */}
+      {/* ── PROCESS ─────────────────────────────── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
         <ProcessGlow />
-
-        <Section id="process" style={{ paddingTop: 0 }}>
+        <Section id="process" style={{ paddingTop: 40 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 100px)", alignItems: "start" }}>
             <ScrollReveal effect="fade-up">
               <Eyebrow label="Process" />
@@ -381,7 +409,7 @@ export default function Home() {
                 { number: "03", title: "Build", description: "Clean, fast, secure Next.js code with world-class animations — connected to your GHL CRM and GEO-optimised for AI search from day one." },
                 { number: "04", title: "Launch", description: "We handle domain, hosting, analytics, and GEO setup. You go live with a site that works as hard as you do. We don't disappear after launch." },
               ].map((step, i) => (
-                <ScrollReveal key={step.number} effect="fade-up" delay={i * 0.08}>
+                <ScrollReveal key={step.number} effect="fade-up" delay={i * 0.05}>
                   <ProcessStep {...step} />
                 </ScrollReveal>
               ))}
@@ -390,23 +418,8 @@ export default function Home() {
         </Section>
       </div>
 
-      {/* ── TESTIMONIAL ──────────────────────────────────────────── */}
-      <div style={{ padding: "80px clamp(20px, 4vw, 48px)", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
-        <ScrollReveal effect="scale">
-          <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center" }}>
-            <p style={{ fontSize: "clamp(18px, 2.8vw, 38px)", fontWeight: 700, lineHeight: 1.35, letterSpacing: "-0.02em", marginBottom: 48 }}>
-              &ldquo;BoldPiq didn&rsquo;t just build us a website — they built us a growth engine. Within 90 days our inbound leads doubled and our close rate improved because clients were already convinced before they even picked up the phone.&rdquo;
-            </p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-              <div style={{ width: 48, height: 48, borderRadius: "50%", background: `linear-gradient(135deg, ${ACCENT}, #6B1E00)`, flexShrink: 0 }} />
-              <div style={{ textAlign: "left" }}>
-                <p style={{ fontWeight: 700, fontSize: 15 }}>Sarah Mitchell</p>
-                <p style={{ color: MUTED, fontSize: 13 }}>Founder, Mitchell Consulting Group</p>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </div>
+      {/* ── ROTATING TESTIMONIALS ────────────────────────────────── */}
+      <RotatingTestimonials />
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
       <Section id="contact">
@@ -417,57 +430,57 @@ export default function Home() {
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.7, maxWidth: 380, marginBottom: 48 }}>
               Tell us about your business and what you want to achieve. We&rsquo;ll come back with a clear plan — no fluff, no hard sell.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 48}}>
               {["Response within 24 hours", "Free initial consultation", "No lock-in contracts"].map(text => (
-                <div key={text} style={{ display: "flex", gap: 14, alignItems: "center", color: MUTED, fontSize: 15 }}>
+                <div key={text} style={{ display: "flex", gap: 14, alignItems: "center", color: MUTED, fontSize: 15}}>
                   <span style={{ color: ACCENT, fontSize: 10, flexShrink: 0 }}>✦</span>{text}
                 </div>
               ))}
             </div>
-          </ScrollReveal>
 
-          <ScrollReveal effect="fade-up" delay={0.15}>
-            <div style={{ padding: "clamp(24px, 4vw, 40px)", border: `1px solid ${BORDER}`, borderRadius: 20, background: SURFACE }}>
-              {/* ── REPLACE WITH GHL EMBED ─────────────────────────────
-                GHL → Sites → Forms → your form → Embed → paste here
-                <iframe src="https://api.leadconnectorhq.com/widget/form/FORM_ID"
-                  style={{ width:"100%", minHeight:600, border:"none" }} scrolling="no" />
-              ───────────────────────────────────────────────────── */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {["Full Name", "Email Address", "Website URL (if you have one)"].map(ph => (
-                  <input key={ph} placeholder={ph} style={{ width: "100%", padding: "16px 20px", background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}`, borderRadius: 12, color: "#fff", fontSize: 15, outline: "none", fontFamily: "inherit", boxSizing: "border-box" }} />
+            <div>
+              <p style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Connect</p>
+              <div style={{ display: "flex", gap: 20 }}>
+                {[
+                  { label: "Instagram", url: "https://www.instagram.com/boldpiq/" },
+                  { label: "Facebook", url: "https://www.facebook.com/boldpiq" },
+                  { label: "Pinterest", url: "https://za.pinterest.com/boldpiq/" },
+                  { label: "LinkedIn", url: "https://www.linkedin.com/company/boldpiq/" },
+                ].map(s => (
+                  <motion.a
+                    key={s.label}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ color: "#fff" }}
+                    style={{ color: MUTED, fontSize: 14, textDecoration: "none" }}
+                  >
+                    {s.label}
+                  </motion.a>
                 ))}
-                <textarea placeholder="Tell us about your project and goals" rows={4} style={{ width: "100%", padding: "16px 20px", background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}`, borderRadius: 12, color: "#fff", fontSize: 15, outline: "none", resize: "none", fontFamily: "inherit", boxSizing: "border-box" }} />
-                <p style={{ color: MUTED, fontSize: 12 }}>Replace this form with your GHL embed. All data flows directly into your GHL CRM.</p>
-                <motion.button whileHover={{ background: "#D4601F", scale: 1.02 }} whileTap={{ scale: 0.98 }} style={{ padding: 18, background: ACCENT, color: "#fff", border: "none", borderRadius: 12, fontWeight: 700, fontSize: 16, cursor: "pointer", fontFamily: "inherit", letterSpacing: "-0.01em", width: "100%" }}>
-                  Send My Brief
-                </motion.button>
               </div>
             </div>
+            
+          </ScrollReveal>
+
+          <ScrollReveal effect="fade-up" delay={0.12}>
+            <GHLBookingWidget
+              src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
+              id="2iYXsaTBfL5b7Y870XVX_home"
+              title="Book a Discovery Call"
+              defaultHeight={700}
+              borderRadius={24}
+              border={`1px solid ${BORDER}`}
+              background={SURFACE}
+              redirectTo="/thank-you"
+              deferLoad
+            />
           </ScrollReveal>
         </div>
       </Section>
 
       {/* ── FOOTER ───────────────────────────────────────────────── */}
-      <footer
-        className="flex flex-col md:flex-row md:items-center md:justify-between"
-        style={{ borderTop: `1px solid ${BORDER}`, padding: "60px clamp(20px, 4vw, 48px)", gap: 32, maxWidth: 1400, margin: "0 auto" }}
-      >
-        <div>
-          <p style={{ fontWeight: 900, fontSize: 22, letterSpacing: "-0.04em", marginBottom: 6 }}>boldpiq</p>
-          <p style={{ color: MUTED, fontSize: 13 }}>© {new Date().getFullYear()} BoldPiq. All rights reserved.</p>
-        </div>
-        <nav className="flex flex-wrap" style={{ gap: "16px 32px" }}>
-          {["Work", "Services", "Process", "Contact"].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} style={{ color: MUTED, fontSize: 14, fontWeight: 500 }}>{item}</a>
-          ))}
-        </nav>
-        <div className="flex" style={{ gap: 20 }}>
-          {["Instagram", "LinkedIn", "Twitter"].map(s => (
-            <a key={s} href="#" style={{ color: MUTED, fontSize: 13 }}>{s}</a>
-          ))}
-        </div>
-      </footer>
+      <Footer />
 
     </main>
   )
