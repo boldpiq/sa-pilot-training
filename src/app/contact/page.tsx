@@ -22,12 +22,11 @@ function Eyebrow({ label }: { label: string }) {
 
 export default function ContactPage() {
   return (
-    <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
+    <main style={{ background: BG, color: "#fff", minHeight: "100vh", position: "relative" }}>
 
       {/* Background glow */}
-      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 50% 40% at 70% 30%, rgba(196,84,26,0.07) 0%, transparent 65%)`, zIndex: 0 }} />
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 50% 40% at 70% 30%, rgba(196,84,26,0.07) 0%, transparent 65%)` }} />
 
-      <div style={{ position: "relative", zIndex: 1 }}>
         {/* HERO */}
         <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 40px", maxWidth: 1400, margin: "0 auto" }}>
           <ScrollReveal effect="fade-up">
@@ -119,7 +118,6 @@ export default function ContactPage() {
             />
           </div>
         </section>
-      </div>
 
       <Footer />
     </main>
