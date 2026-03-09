@@ -106,19 +106,17 @@ export default function ContactPage() {
             </ScrollReveal>
 
             {/* Right — booking widget */}
-            <ScrollReveal effect="fade-up" delay={0.12}>
-              <GHLBookingWidget
-                src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
-                id="2iYXsaTBfL5b7Y870XVX_contact"
-                title="Book a Free Discovery Call"
-                defaultHeight={700}
-                borderRadius={24}
-                border={`1px solid ${BORDER}`}
-                background={SURFACE}
-                redirectTo="/thank-you"
-                deferLoad
-              />
-            </ScrollReveal>
+            <GHLBookingWidget
+              src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
+              id="2iYXsaTBfL5b7Y870XVX_contact"
+              title="Book a Free Discovery Call"
+              defaultHeight={700}
+              borderRadius={24}
+              border={`1px solid ${BORDER}`}
+              background={SURFACE}
+              redirectTo="/thank-you"
+              deferLoad
+            />
           </div>
         </section>
       </div>
