@@ -27,6 +27,12 @@
     }
   ],
 
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "https://www.boldpiq.com",
+      "permanent": true
+    }
+  ],
   "rewrites": []
 }
