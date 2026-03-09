@@ -22,10 +22,7 @@ function Eyebrow({ label }: { label: string }) {
 
 export default function ContactPage() {
   return (
-    <main style={{ background: BG, color: "#fff", minHeight: "100vh", position: "relative" }}>
-
-      {/* Background glow */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 50% 40% at 70% 30%, rgba(196,84,26,0.07) 0%, transparent 65%)` }} />
+    <main style={{ background: `radial-gradient(ellipse 50% 40% at 70% 30%, rgba(196,84,26,0.07) 0%, transparent 65%), ${BG}`, color: "#fff", minHeight: "100vh" }}>
 
         {/* HERO */}
         <section style={{ padding: "clamp(100px, 18vw, 160px) clamp(20px, 4vw, 48px) 40px", maxWidth: 1400, margin: "0 auto" }}>
