@@ -107,7 +107,7 @@ export default function ContactPage() {
 
             {/* Right — booking widget */}
             <ScrollReveal effect="fade-up" delay={0.12}>
-              <div style={{ border: `1px solid ${BORDER}`, borderRadius: 24, background: SURFACE, overflowY: "auto", maxHeight: "80vh" }}>
+              <div style={{ border: `1px solid ${BORDER}`, borderRadius: 24, background: SURFACE, overflowY: "auto" }}>
                 <GHLBookingWidget
                   src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
                   id="2iYXsaTBfL5b7Y870XVX_contact"
