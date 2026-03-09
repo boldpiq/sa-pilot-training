@@ -91,6 +91,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  verification: {
+    google: "L1AJnQnD7hgCHadc6B4bnwLMbP7P62ePRcdMnq7RGXk",
+  },
 }
 
 const navItems = [
