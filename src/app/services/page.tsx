@@ -34,7 +34,7 @@ const services = [
     number: "02",
     title: "Web Development",
     tagline: "Fast, secure, built to scale.",
-    description: "We build in Next.js — the same stack used by the world's fastest websites. Your site loads in under a second, scores 95+ on Lighthouse, and is connected to your GHL CRM from day one.",
+    description: "We build in Next.js — the same stack used by the world's fastest websites. Your site loads fast, and is connected to your GHL CRM from day one.",
     deliverables: ["Next.js + TypeScript codebase", "Sanity CMS integration", "GHL CRM form connections", "Core Web Vitals optimised (95+ Lighthouse)", "GEO-optimised for AI search (ChatGPT, Perplexity)"],
     tags: ["Next.js", "TypeScript", "Vercel", "Sanity CMS", "GHL", "GEO"],
     outcome: "Sites that rank, load fast, and work on every device.",
