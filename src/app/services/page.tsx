@@ -35,7 +35,7 @@ const services = [
     title: "Web Development",
     tagline: "Fast, secure, built to scale.",
     description: "We build in Next.js — the same stack used by the world's fastest websites. Your site loads fast, and is connected to your GHL CRM from day one.",
-    deliverables: ["Next.js + TypeScript codebase", "Sanity CMS integration", "GHL CRM form connections", "Core Web Vitals optimised (95+ Lighthouse)", "GEO-optimised for AI search (ChatGPT, Perplexity)"],
+    deliverables: ["Next.js + TypeScript codebase", "Sanity CMS integration", "GHL CRM form connections", "Core Web Vitals optimised", "GEO-optimised for AI search (ChatGPT, Perplexity)"],
     tags: ["Next.js", "TypeScript", "Vercel", "Sanity CMS", "GHL", "GEO"],
     outcome: "Sites that rank, load fast, and work on every device.",
   },
@@ -98,7 +98,7 @@ export default function ServicesPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3" style={{ gap: 32 }}>
               {[
-                { icon: "⚡", title: "Sub-second load times", desc: "Speedy load times." },
+                { icon: "⚡", title: "Fast load times", desc: "Optimised for speed on every device." },
                 { icon: "📱", title: "Mobile-first design", desc: "Pixel-perfect on every screen, every browser." },
                 { icon: "🔒", title: "Security hardened", desc: "CSP headers, HTTPS, no exposed secrets — ever." },
                 { icon: "🤖", title: "GEO optimised", desc: "Structured to be cited by ChatGPT, Perplexity, and Google AI." },
