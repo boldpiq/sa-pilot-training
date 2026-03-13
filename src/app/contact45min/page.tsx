@@ -117,21 +117,17 @@ export default function Contact45MinPage() {
             </ScrollReveal>
 
             {/* Right — booking widget */}
-            <ScrollReveal effect="fade-up" delay={0.12}>
-              <div style={{ border: `1px solid ${BORDER}`, borderRadius: 24, background: SURFACE, overflowY: "auto", maxHeight: "80vh" }}>
-                <GHLBookingWidget
-                  src="https://link.zip360.co.za/widget/booking/6TbfAfOJ1Q9lZl47p6oG"
-                  id="6TbfAfOJ1Q9lZl47p6oG_1773052670727"
-                  title="Book a 45-Minute Set Appointment"
-                  defaultHeight={800}
-                  borderRadius={24}
-                  border="none"
-                  background="transparent"
-                  redirectTo="/thank-you"
-                  deferLoad
-                />
-              </div>
-            </ScrollReveal>
+            <GHLBookingWidget
+              src="https://link.zip360.co.za/widget/booking/6TbfAfOJ1Q9lZl47p6oG"
+              id="6TbfAfOJ1Q9lZl47p6oG_1773052670727"
+              title="Book a 45-Minute Set Appointment"
+              defaultHeight={800}
+              borderRadius={24}
+              border={`1px solid ${BORDER}`}
+              background={SURFACE}
+              redirectTo="/thank-you"
+              deferLoad
+            />
           </div>
         </section>
       </div>
