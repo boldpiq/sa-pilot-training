@@ -58,6 +58,40 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
+// ── Drifting clouds behind the plane ─────────────────────────────────────────
+function CloudLayer() {
+  const clouds = [
+    { top: "6%",  width: 340, opacity: 0.07, duration: 60, delay: 3 },
+    { top: "20%", width: 160, opacity: 0.05, duration: 80, delay: 22 },
+    { top: "11%", width: 480, opacity: 0.05, duration: 50, delay: 42 },
+    { top: "2%",  width: 120, opacity: 0.06, duration: 72, delay: 10 },
+    { top: "26%", width: 280, opacity: 0.07, duration: 65, delay: 58 },
+    { top: "15%", width: 200, opacity: 0.04, duration: 90, delay: 30 },
+  ]
+  return (
+    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
+      {clouds.map((c, i) => (
+        <motion.div
+          key={i}
+          animate={{ x: ["110vw", "-60vw"] }}
+          transition={{ duration: c.duration, delay: c.delay, repeat: Infinity, ease: "linear", repeatDelay: 0 }}
+          style={{ position: "absolute", top: c.top, width: c.width, opacity: c.opacity }}
+        >
+          <svg viewBox="0 0 320 90" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+            <ellipse cx="75"  cy="68" rx="75"  ry="28" fill="rgba(6,12,24,1)" />
+            <ellipse cx="155" cy="52" rx="80"  ry="42" fill="rgba(6,12,24,1)" />
+            <ellipse cx="240" cy="62" rx="80"  ry="32" fill="rgba(6,12,24,1)" />
+            <ellipse cx="120" cy="70" rx="90"  ry="22" fill="rgba(6,12,24,1)" />
+            <ellipse cx="200" cy="70" rx="85"  ry="22" fill="rgba(6,12,24,1)" />
+            <ellipse cx="50"  cy="72" rx="50"  ry="18" fill="rgba(6,12,24,1)" />
+            <ellipse cx="290" cy="72" rx="45"  ry="18" fill="rgba(6,12,24,1)" />
+          </svg>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 // ── Realistic propeller plane — Piper PA-28 / Cessna 172 silhouette ─────────
 function PropellerPlane() {
   const floatRef = useRef<HTMLDivElement>(null)
@@ -452,6 +486,9 @@ export default function Home() {
       >
         {/* Background glow */}
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 60% 50% at 70% 40%, rgba(200,24,26,0.05) 0%, transparent 70%)` }} />
+
+        {/* Drifting clouds — behind the plane */}
+        <CloudLayer />
 
         {/* Propeller airplane — tasteful background decoration */}
         <PropellerPlane />
