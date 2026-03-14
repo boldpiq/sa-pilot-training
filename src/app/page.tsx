@@ -1,17 +1,17 @@
 "use client"
 import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, useInView, AnimatePresence, useAnimationFrame } from "motion/react"
+import { motion, useScroll, useTransform, useInView, useAnimationFrame } from "motion/react"
 import { VelocityMarquee } from "@/components/scroll/VelocityMarquee"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import Image from "next/image"
 import { Footer } from "@/components/layout/Footer"
 import { GHLBookingWidget } from "@/components/ui/GHLBookingWidget"
 
-const BG = "#0B0F1C"
-const ACCENT = "#C4541A"
-const MUTED = "rgba(255,255,255,0.45)"
-const SURFACE = "rgba(255,255,255,0.05)"
-const BORDER = "rgba(255,255,255,0.08)"
+const BG = "#FFFFFF"
+const ACCENT = "#C8181A"
+const MUTED = "rgba(6,12,24,0.62)"
+const SURFACE = "rgba(6,12,24,0.04)"
+const BORDER = "rgba(6,12,24,0.1)"
 
 
 function Section({ id, children, style, className }: { id?: string; children: React.ReactNode; style?: React.CSSProperties; className?: string }) {
@@ -58,18 +58,199 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
-function ServiceCard({ number, title, description, tags }: { number: string; title: string; description: string; tags: string[] }) {
+// ── Realistic propeller plane — Piper PA-28 / Cessna 172 silhouette ─────────
+function PropellerPlane() {
+  const floatRef = useRef<HTMLDivElement>(null)
+
+  useAnimationFrame((t) => {
+    if (floatRef.current) {
+      const y = Math.sin(t * 0.00038) * 11
+      const x = Math.cos(t * 0.00022) * 5
+      floatRef.current.style.transform = `translate(${x}px, ${y}px)`
+    }
+  })
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 3, delay: 1.2, ease: "easeOut" }}
+      style={{
+        position: "absolute",
+        right: "4%",
+        top: "14%",
+        width: "clamp(200px, 28vw, 480px)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }}
+    >
+      <div ref={floatRef} style={{ willChange: "transform" }}>
+        <svg
+          viewBox="0 0 580 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ width: "100%", height: "auto", overflow: "visible" }}
+        >
+          {/* ── Piper PA-28 / Cessna-style low-wing trainer ── */}
+
+          {/* Main fuselage — proper tapered tube, wide cabin, slim tail */}
+          <path
+            d="M88 93
+               C 118 84 158 79 204 76
+               C 258 72 316 70 374 70
+               Q 418 70 452 72
+               L 488 76
+               Q 504 79 512 88
+               Q 516 92 512 98
+               Q 504 106 488 110
+               L 452 116
+               Q 418 118 374 118
+               C 316 118 258 116 204 112
+               C 158 109 118 106 88 101 Z"
+            fill="rgba(6,12,24,0.13)"
+          />
+
+          {/* Engine cowl — rounded nacelle wider than fuselage nose */}
+          <path
+            d="M488 74
+               Q 510 74 522 84
+               Q 530 90 522 100
+               Q 510 108 488 112
+               L 488 106
+               Q 506 102 512 94
+               Q 516 90 512 86
+               Q 506 80 488 78 Z"
+            fill="rgba(6,12,24,0.18)"
+          />
+
+          {/* Cowl intake lip — dark ring at very front */}
+          <ellipse cx="522" cy="90" rx="10" ry="8" fill="rgba(6,12,24,0.09)" />
+
+          {/* Cockpit windshield — strongly angled back */}
+          <path
+            d="M452 72
+               L 426 48
+               Q 413 42 396 44
+               L 376 53
+               L 376 70
+               L 452 70 Z"
+            fill="rgba(20,50,100,0.12)"
+          />
+          {/* Windshield frame line */}
+          <path
+            d="M452 72 L 426 48 Q 413 42 396 44 L 376 53"
+            stroke="rgba(6,12,24,0.10)" strokeWidth="1.5" fill="none"
+          />
+
+          {/* Cabin window 1 */}
+          <ellipse cx="420" cy="84" rx="17" ry="8" fill="rgba(20,50,100,0.10)" />
+          {/* Cabin window 2 */}
+          <ellipse cx="368" cy="86" rx="14" ry="7" fill="rgba(20,50,100,0.09)" />
+          {/* Cabin window 3 */}
+          <ellipse cx="316" cy="88" rx="11" ry="6" fill="rgba(20,50,100,0.08)" />
+
+          {/* Fuselage spine / top highlight */}
+          <path
+            d="M 200 74 Q 320 70 440 72 L 488 76 L 488 74 Q 430 70 320 68 Q 220 68 200 72 Z"
+            fill="rgba(6,12,24,0.05)"
+          />
+
+          {/* Near wing — wide root chord tapering to tip, PA-28 proportions */}
+          <path
+            d="M 325 118
+               C 295 130 265 152 240 175
+               L 285 185
+               C 310 165 358 140 425 118 Z"
+            fill="rgba(6,12,24,0.13)"
+          />
+          {/* Wing undertone — trailing surface depth */}
+          <path
+            d="M 380 120
+               C 350 138 318 162 285 185
+               L 295 186
+               C 330 163 364 140 395 122 Z"
+            fill="rgba(6,12,24,0.05)"
+          />
+
+          {/* Vertical tail fin — tall swept fin */}
+          <path
+            d="M 118 88
+               L 100 42
+               Q 114 52 136 72
+               L 150 84
+               L 150 94
+               L 118 94 Z"
+            fill="rgba(6,12,24,0.13)"
+          />
+          {/* Fin trailing edge shading */}
+          <path
+            d="M 136 72 Q 150 78 150 94 L 146 94 Q 146 80 134 74 Z"
+            fill="rgba(6,12,24,0.06)"
+          />
+
+          {/* Horizontal stabilizer — top */}
+          <path
+            d="M 132 82
+               L 94 56
+               Q 108 60 130 72
+               L 158 80
+               L 158 82 Z"
+            fill="rgba(6,12,24,0.12)"
+          />
+          {/* Horizontal stabilizer — bottom */}
+          <path
+            d="M 132 104
+               L 94 128
+               Q 108 124 130 114
+               L 158 106
+               L 158 104 Z"
+            fill="rgba(6,12,24,0.12)"
+          />
+
+
+          {/* Antenna stub on fuselage spine */}
+          <line x1="300" y1="72" x2="297" y2="60" stroke="rgba(6,12,24,0.08)" strokeWidth="1.5" strokeLinecap="round"/>
+
+          {/* Propeller group — 3-blade, spinning */}
+          <g>
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 522 90"
+              to="360 522 90"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+            {/* Spinner hub */}
+            <ellipse cx="522" cy="90" rx="7" ry="7" fill="rgba(6,12,24,0.20)" />
+            {/* Blade 1 — up */}
+            <path d="M 522 83 Q 519 67 518 52 Q 522 48 526 52 Q 525 67 522 83 Z" fill="rgba(6,12,24,0.17)" />
+            {/* Blade 2 — lower right */}
+            <path d="M 527 94 Q 540 107 551 120 Q 547 124 543 122 Q 534 110 526 94 Z" fill="rgba(6,12,24,0.17)" />
+            {/* Blade 3 — lower left */}
+            <path d="M 517 94 Q 504 107 493 120 Q 497 124 501 122 Q 510 110 518 94 Z" fill="rgba(6,12,24,0.17)" />
+          </g>
+        </svg>
+      </div>
+    </motion.div>
+  )
+}
+
+function ProgramCard({ number, title, hours, description, tags }: { number: string; title: string; hours: string; description: string; tags: string[] }) {
   const [hovered, setHovered] = useState(false)
   return (
     <motion.a
-      href="/work/"
+      href="/services/"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       animate={{ borderColor: hovered ? ACCENT : BORDER }}
-      style={{ padding: "48px 40px", borderRadius: 20, border: `1px solid ${BORDER}`, background: SURFACE, display: "flex", flexDirection: "column", gap: 24, position: "relative", overflow: "hidden", cursor: "default" }}
+      style={{ padding: "48px 40px", borderRadius: 20, border: `1px solid ${BORDER}`, background: SURFACE, display: "flex", flexDirection: "column", gap: 24, position: "relative", overflow: "hidden", cursor: "pointer" }}
     >
       <motion.div animate={{ opacity: hovered ? 1 : 0 }} style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${ACCENT}, transparent)` }} />
-      <span style={{ fontSize: 11, letterSpacing: "0.15em", color: MUTED, textTransform: "uppercase" }}>{number}</span>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+        <span style={{ fontSize: 11, letterSpacing: "0.15em", color: MUTED, textTransform: "uppercase" }}>{number}</span>
+        <span style={{ fontSize: 11, letterSpacing: "0.1em", color: ACCENT, fontWeight: 700, padding: "4px 12px", border: `1px solid rgba(200,24,26,0.3)`, borderRadius: 100 }}>{hours}</span>
+      </div>
       <div>
         <h3 style={{ fontSize: 28, fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>{title}</h3>
         <p style={{ color: MUTED, lineHeight: 1.7, fontSize: 16 }}>{description}</p>
@@ -77,40 +258,53 @@ function ServiceCard({ number, title, description, tags }: { number: string; tit
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: "auto" }}>
         {tags.map(t => <span key={t} style={{ padding: "4px 14px", borderRadius: 100, border: `1px solid ${BORDER}`, fontSize: 12, color: MUTED }}>{t}</span>)}
       </div>
-      <motion.div animate={{ x: hovered ? 0 : 16, opacity: hovered ? 1 : 0 }} style={{ fontSize: 13, fontWeight: 700, color: ACCENT }}>Learn more →</motion.div>
+      <motion.div animate={{ x: hovered ? 0 : 16, opacity: hovered ? 1 : 0 }} style={{ fontSize: 13, fontWeight: 700, color: ACCENT }}>View details →</motion.div>
     </motion.a>
   )
 }
 
-function CaseCard({ tag, title, outcome, gradient }: { tag: string; title: string; outcome: string; gradient: string }) {
-  const [hovered, setHovered] = useState(false)
+function CostCard({ country, cost, days, highlight }: { country: string; cost: string; days: string; highlight?: boolean }) {
   return (
-    <motion.a
-      href="/work/"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      animate={{ scale: hovered ? 1.02 : 1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      style={{ borderRadius: 20, overflow: "hidden", background: gradient, minHeight: 400, padding: "48px 40px", display: "flex", flexDirection: "column", justifyContent: "space-between", cursor: "pointer" }}
-    >
-      <span style={{ display: "inline-block", padding: "4px 14px", borderRadius: 100, background: "rgba(255,255,255,0.1)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", width: "fit-content" }}>{tag}</span>
+    <div style={{
+      padding: "clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px)",
+      borderRadius: 20,
+      border: `1px solid ${highlight ? "rgba(200,24,26,0.4)" : BORDER}`,
+      background: highlight ? `rgba(200,24,26,0.08)` : SURFACE,
+      display: "flex",
+      flexDirection: "column",
+      gap: 20,
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {highlight && (
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${ACCENT}, transparent)` }} />
+      )}
       <div>
-        <h3 style={{ fontSize: 28, fontWeight: 800, letterSpacing: "-0.03em", marginBottom: 16 }}>{title}</h3>
-        <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ width: 8, height: 8, borderRadius: "50%", background: ACCENT, flexShrink: 0, display: "inline-block" }} />{outcome}
-        </p>
+        <p style={{ fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: MUTED, marginBottom: 8 }}>{country}</p>
+        <p style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: highlight ? "#060C18" : MUTED }}>{cost}</p>
+        <p style={{ fontSize: 13, color: MUTED, marginTop: 8 }}>average training investment</p>
       </div>
-      <motion.div animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -8 }} style={{ fontSize: 13, fontWeight: 700 }}>View case study →</motion.div>
-    </motion.a>
+      <div style={{ height: 1, background: BORDER }} />
+      <div>
+        <p style={{ fontSize: 22, fontWeight: 700, color: highlight ? ACCENT : MUTED }}>{days}</p>
+        <p style={{ fontSize: 13, color: MUTED, marginTop: 4 }}>flyable training days per year</p>
+      </div>
+      {highlight && (
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", background: `rgba(200,24,26,0.15)`, borderRadius: 100, width: "fit-content" }}>
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: ACCENT, display: "block" }} />
+          <span style={{ fontSize: 12, fontWeight: 700, color: ACCENT, letterSpacing: "0.06em" }}>BEST VALUE</span>
+        </div>
+      )}
+    </div>
   )
 }
 
 function ProcessStep({ number, title, description }: { number: string; title: string; description: string }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 24, paddingBottom: 48, borderBottom: `1px solid ${BORDER}` }}>
-      <span style={{ fontSize: "clamp(32px, 5vw, 44px)", fontWeight: 900, color: ACCENT, letterSpacing: "-0.04em", lineHeight: 1 }}>{number}</span>
+    <div style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 24, paddingBottom: 40, borderBottom: `1px solid ${BORDER}` }}>
+      <span style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 900, color: ACCENT, letterSpacing: "-0.04em", lineHeight: 1 }}>{number}</span>
       <div>
-        <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 12, letterSpacing: "-0.02em" }}>{title}</h3>
+        <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 10, letterSpacing: "-0.02em" }}>{title}</h3>
         <p style={{ color: MUTED, lineHeight: 1.7, fontSize: 15 }}>{description}</p>
       </div>
     </div>
@@ -134,98 +328,96 @@ function ProcessGlow() {
   })
   return (
     <>
-      <div ref={ref1} style={{ position: "absolute", inset: -160, pointerEvents: "none", background: `radial-gradient(ellipse 55% 48% at 60% 40%, rgba(196,84,26,0.11) 0%, transparent 68%)`, willChange: "transform" }} />
-      <div ref={ref2} style={{ position: "absolute", inset: -120, pointerEvents: "none", background: `radial-gradient(ellipse 42% 38% at 38% 60%, rgba(196,84,26,0.06) 0%, transparent 62%)`, willChange: "transform" }} />
+      <div ref={ref1} style={{ position: "absolute", inset: -160, pointerEvents: "none", background: `radial-gradient(ellipse 55% 48% at 60% 40%, rgba(200,24,26,0.10) 0%, transparent 68%)`, willChange: "transform" }} />
+      <div ref={ref2} style={{ position: "absolute", inset: -120, pointerEvents: "none", background: `radial-gradient(ellipse 42% 38% at 38% 60%, rgba(200,24,26,0.06) 0%, transparent 62%)`, willChange: "transform" }} />
     </>
   )
 }
 
-// ── Rotating Testimonials ──────────────────────────────────────────────────
-const reviews = [
+// ── Why South Africa highlights ─────────────────────────────────────────────
+const highlights = [
   {
-    quote: "Her commitment to quality and her ability to capture the spirit of our brand in every aspect of the site… highly recommend her services.",
-    name: "The Cherri Chilli",
-    role: "Founder, The Cherri Chilli - Award-winning brand",
-    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/67fa558dc7a0152ed4d48f4c.png",
+    stat: "300+",
+    label: "Flyable training days per year",
+    detail: "South Africa's year-round clear skies mean fewer delays and faster progression to your licence.",
   },
   {
-    quote: "Working with BoldPiq has been a complete game-changer for my coaching business… The website design is not only visually stunning but also user-friendly, with seamless hosting and an intuitive booking solution.",
-    name: "Dr. Eleanor O'Sullivan",
-    role: "Founder / Coach, Dr. Eleanor O'Sullivan",
-    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/67fa5819266b6fb33c8f4005.png",
+    stat: "50%+",
+    label: "Average saving vs UK or USA training",
+    detail: "Train to the same ICAO-compliant standard for a fraction of the cost — without compromising quality.",
   },
   {
-    quote: "We are very fortunate to have had Monique develop our website and would recommend her to anyone in the process of developing a website. She did a wonderful job with our website, and we are sure that she would approach any project with the same care and attention to detail.",
-    name: "Net Vir Pret",
-    role: "Net Vir Pret, Founder - Community of Practice for Social Change",
-    image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/696e1ee2436e7117cd38fc9d.webp",
+    stat: "ICAO",
+    label: "Globally recognized licence standard",
+    detail: "SACAA-issued licences comply fully with ICAO Annex 1 — accepted by aviation authorities worldwide.",
   },
 ]
 
-function RotatingTestimonials() {
-  const [current, setCurrent] = useState(0)
-  const [dir, setDir] = useState(1)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDir(1)
-      setCurrent(c => (c + 1) % reviews.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const go = (idx: number) => {
-    setDir(idx > current ? 1 : -1)
-    setCurrent(idx)
-  }
-
-  const review = reviews[current]
-
+// ── Cinematic propeller plane image strip ──────────────────────────────────
+function CinematicStrip() {
   return (
-    <div style={{ padding: "80px clamp(20px, 4vw, 48px)", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
-      <div style={{ maxWidth: 880, margin: "0 auto", textAlign: "center" }}>
-        <AnimatePresence mode="wait" custom={dir}>
-          <motion.div
-            key={current}
-            custom={dir}
-            initial={{ opacity: 0, y: dir * 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: dir * -24 }}
-            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-          >
-            <p style={{ fontSize: "clamp(18px, 2.8vw, 34px)", fontWeight: 700, lineHeight: 1.35, letterSpacing: "-0.02em", marginBottom: 48 }}>
-              &ldquo;{review.quote}&rdquo;
+    <div style={{ position: "relative", height: "clamp(300px, 38vw, 520px)", overflow: "hidden" }}>
+      <Image
+        src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2200&q=80"
+        alt="Propeller aircraft in flight"
+        fill
+        style={{ objectFit: "cover", objectPosition: "center 55%" }}
+        sizes="100vw"
+      />
+      {/* Deep navy gradient overlay — keeps text readable + matches brand */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(105deg, rgba(6,12,24,0.94) 0%, rgba(6,12,24,0.72) 48%, rgba(6,12,24,0.88) 100%)",
+      }} />
+      {/* Subtle red tint at right edge to blend brand */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 50% 80% at 80% 50%, rgba(200,24,26,0.08) 0%, transparent 60%)", pointerEvents: "none" }} />
+
+      <div style={{
+        position: "absolute", inset: 0,
+        display: "flex", alignItems: "center",
+        padding: "0 clamp(20px, 4vw, 48px)",
+        maxWidth: 1400,
+        margin: "0 auto",
+        left: 0, right: 0,
+      }}>
+        <ScrollReveal effect="fade-up">
+          <div style={{ maxWidth: 620 }}>
+            <p style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: ACCENT, marginBottom: 24, fontWeight: 700 }}>SACAA-Accredited Training</p>
+            <p style={{ fontSize: "clamp(22px, 3.5vw, 44px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.1, color: "#fff" }}>
+              &ldquo;South Africa offers world-class pilot training at a fraction of the cost — with 300+ flyable days per year.&rdquo;
             </p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-              <div style={{ width: 48, height: 48, borderRadius: "50%", overflow: "hidden", flexShrink: 0, position: "relative", outline: "2px solid #C4541A", outlineOffset: "2px" }}>
-                <Image src={review.image} alt={review.name} fill style={{ objectFit: "cover" }} sizes="48px" />
+            <div style={{ display: "flex", gap: 32, marginTop: 36 }}>
+              <div>
+                <p style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 900, color: ACCENT, letterSpacing: "-0.04em", lineHeight: 1 }}>$45k</p>
+                <p style={{ fontSize: 12, color: MUTED, marginTop: 6, letterSpacing: "0.06em", textTransform: "uppercase" }}>avg. CPL cost in SA</p>
               </div>
-              <div style={{ textAlign: "left" }}>
-                <p style={{ fontWeight: 700, fontSize: 15 }}>{review.name}</p>
-                <p style={{ color: MUTED, fontSize: 13 }}>{review.role}</p>
+              <div style={{ width: 1, background: BORDER, alignSelf: "stretch" }} />
+              <div>
+                <p style={{ fontSize: "clamp(24px, 3vw, 40px)", fontWeight: 900, color: "#fff", letterSpacing: "-0.04em", lineHeight: 1 }}>$105k</p>
+                <p style={{ fontSize: 12, color: MUTED, marginTop: 6, letterSpacing: "0.06em", textTransform: "uppercase" }}>avg. CPL cost in UK</p>
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
+  )
+}
 
-        {/* Dot nav */}
-        <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 40 }}>
-          {reviews.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              aria-label={`Review ${i + 1}`}
-              style={{
-                width: i === current ? 28 : 8,
-                height: 8,
-                borderRadius: 100,
-                background: i === current ? ACCENT : "rgba(255,255,255,0.2)",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                transition: "width 0.35s ease, background 0.35s ease",
-              }}
-            />
+function HighlightStrip() {
+  return (
+    <div style={{ padding: "80px clamp(20px, 4vw, 48px)", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 48 }}>
+          {highlights.map((h, i) => (
+            <ScrollReveal key={h.stat} effect="fade-up" delay={i * 0.1}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <p style={{ fontSize: "clamp(40px, 6vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", color: i === 1 ? ACCENT : "#060C18", lineHeight: 1 }}>{h.stat}</p>
+                <div style={{ width: 32, height: 2, background: ACCENT }} />
+                <p style={{ fontWeight: 700, fontSize: 16, letterSpacing: "-0.01em" }}>{h.label}</p>
+                <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.65 }}>{h.detail}</p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -240,7 +432,7 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   return (
-    <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
+    <main style={{ background: BG, color: "#060C18", minHeight: "100vh" }}>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section
@@ -255,10 +447,13 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 60% 50% at 70% 40%, rgba(196,84,26,0.10) 0%, transparent 70%)` }} />
-        <div style={{ position: "absolute", bottom: -60, right: -40, fontSize: "clamp(120px, 30vw, 420px)", fontWeight: 900, color: "rgba(255,255,255,0.022)", userSelect: "none", pointerEvents: "none", letterSpacing: "-0.05em", lineHeight: 1 }}>01</div>
+        {/* Background glow */}
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 60% 50% at 70% 40%, rgba(200,24,26,0.05) 0%, transparent 70%)` }} />
 
-        <motion.div style={{ y: heroY, opacity: heroOpacity, maxWidth: 1400, width: "100%", margin: "0 auto" }}>
+        {/* Propeller airplane — tasteful background decoration */}
+        <PropellerPlane />
+
+        <motion.div style={{ y: heroY, opacity: heroOpacity, maxWidth: 1400, width: "100%", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -270,16 +465,16 @@ export default function Home() {
               transition={{ duration: 2, repeat: Infinity }}
               style={{ width: 7, height: 7, borderRadius: "50%", background: ACCENT, display: "block", flexShrink: 0 }}
             />
-            Web Design &amp; Development Agency
+            SACAA-Accredited &middot; ICAO-Compliant &middot; International Students
           </motion.div>
 
-          {["Built", "To Grow."].map((line, i) => (
+          {["Become A", "Pilot."].map((line, i) => (
             <div key={line} style={{ overflow: "hidden" }}>
               <motion.h1
                 initial={{ y: "105%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.3 + i * 0.15 }}
-                style={{ fontSize: "clamp(64px, 13vw, 200px)", fontWeight: 900, lineHeight: 0.88, letterSpacing: "-0.04em", margin: 0, color: i === 1 ? ACCENT : "#fff" }}
+                style={{ fontSize: "clamp(64px, 13vw, 200px)", fontWeight: 900, lineHeight: 0.88, letterSpacing: "-0.04em", margin: 0, color: i === 1 ? ACCENT : "#060C18" }}
               >
                 {line}
               </motion.h1>
@@ -293,12 +488,12 @@ export default function Home() {
             className="flex flex-col sm:flex-row sm:items-end sm:justify-between"
             style={{ gap: 40, marginTop: 64, flexWrap: "wrap" }}
           >
-            <p style={{ fontSize: "clamp(15px, 1.4vw, 20px)", color: MUTED, maxWidth: 480, lineHeight: 1.65, margin: 0 }}>
-              High-performance websites that attract, convert, and retain — engineered for businesses that refuse to blend in.
+            <p style={{ fontSize: "clamp(15px, 1.4vw, 20px)", color: MUTED, maxWidth: 520, lineHeight: 1.65, margin: 0 }}>
+              Train in year-round ideal weather with SACAA-accredited flight schools in South Africa — we handle visas, accommodation, and full logistics.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <motion.a href="/contact" whileHover={{ scale: 1.04, background: "#D4601F" }} whileTap={{ scale: 0.97 }} style={{ padding: "15px 36px", background: ACCENT, color: "#fff", borderRadius: 100, fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>Get Started</motion.a>
-              <motion.a href="/work" whileHover={{ borderColor: "rgba(255,255,255,0.3)" }} style={{ padding: "15px 36px", border: `1px solid ${BORDER}`, color: "#fff", borderRadius: 100, fontWeight: 600, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>See Our Work</motion.a>
+              <motion.a href="/contact" whileHover={{ scale: 1.04, background: "#D41A1A" }} whileTap={{ scale: 0.97 }} style={{ padding: "15px 36px", background: ACCENT, color: "#fff", borderRadius: 100, fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>Book Free Consultation</motion.a>
+              <motion.a href="/services" whileHover={{ borderColor: "rgba(6,12,24,0.3)", background: "rgba(6,12,24,0.06)" }} style={{ padding: "15px 36px", border: `1px solid ${BORDER}`, color: "#060C18", borderRadius: 100, fontWeight: 600, fontSize: 15, letterSpacing: "-0.01em", display: "inline-block" }}>Explore Programs</motion.a>
             </div>
           </motion.div>
         </motion.div>
@@ -307,34 +502,34 @@ export default function Home() {
       {/* ── MARQUEE ──────────────────────────────────────────────── */}
       <div style={{ padding: "28px 0", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
         <VelocityMarquee
-          items={["Web Design", "Web Development", "Brand Identity", "GEO Optimised", "Conversion Focused", "Mobile First", "Sanity CMS", "Motion & Animation", "Results Driven", "Vercel Hosted"]}
+          items={["PPL Training", "CPL Training", "ATPL Training", "SACAA Accredited", "ICAO Compliant", "Visa Guidance", "300+ Flyable Days", "Cost-Efficient Training", "End-to-End Support", "International Students"]}
           baseVelocity={-2}
         />
       </div>
 
       {/* ── STATS ────────────────────────────────────────────────── */}
       <Section>
-        <ScrollReveal effect="fade-up"><Eyebrow label="Outcomes" /></ScrollReveal>
+        <ScrollReveal effect="fade-up"><Eyebrow label="Why South Africa" /></ScrollReveal>
         <div
           className="grid grid-cols-1 md:grid-cols-3"
           style={{ borderRadius: 20, overflow: "hidden", border: `1px solid ${BORDER}` }}
         >
           {[
-            { stat: 3.2, suffix: "×", label: "Average conversion rate lift across client sites" },
-            { stat: 94, suffix: "%", label: "Client retention rate — we keep the clients we earn" },
-            { stat: 6, suffix: " wks", label: "Average time from brief to live website" },
+            { stat: 50, suffix: "%+", label: "Average saving compared to equivalent training in the UK or USA" },
+            { stat: 300, suffix: "+", label: "Flyable training days per year — far more than Europe or North America" },
+            { stat: 7, suffix: " steps", label: "End-to-end process from consultation to licensed pilot" },
           ].map(({ stat, suffix, label }, i) => (
             <ScrollReveal key={label} effect="fade-up" delay={i * 0.1}>
               <div
                 className={i < 2 ? "border-b md:border-b-0 md:border-r" : ""}
                 style={{
                   padding: "clamp(40px, 5vw, 64px) clamp(24px, 4vw, 48px)",
-                  background: i === 1 ? `rgba(196,84,26,0.08)` : SURFACE,
+                  background: i === 1 ? `rgba(200,24,26,0.08)` : SURFACE,
                   borderColor: BORDER,
                   height: "100%",
                 }}
               >
-                <div style={{ fontSize: "clamp(48px, 7vw, 96px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: i === 1 ? ACCENT : "#fff", marginBottom: 20 }}>
+                <div style={{ fontSize: "clamp(48px, 7vw, 96px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: i === 1 ? ACCENT : "#060C18", marginBottom: 20 }}>
                   <Counter to={stat} suffix={suffix} />
                 </div>
                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.6, maxWidth: 240 }}>{label}</p>
@@ -344,51 +539,54 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── SERVICES ─────────────────────────────────────────────── */}
-      <Section id="services" style={{ paddingTop: 0 }}>
+      {/* ── TRAINING PROGRAMS ────────────────────────────────────── */}
+      <Section id="programs" style={{ paddingTop: 0 }}>
         <ScrollReveal effect="fade-up">
           <div
             className="flex flex-col md:flex-row md:items-end md:justify-between"
             style={{ marginBottom: 64, gap: 24 }}
           >
             <div>
-              <Eyebrow label="Services" />
-              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>What We<br /><span style={{ color: ACCENT }}>Build.</span></h2>
+              <Eyebrow label="Training Pathways" />
+              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>Your Flight<br /><span style={{ color: ACCENT }}>Path.</span></h2>
             </div>
-            <p style={{ color: MUTED, maxWidth: 360, lineHeight: 1.7, fontSize: 16 }}>Every engagement is designed to move the needle — not just look good on a screen.</p>
+            <p style={{ color: MUTED, maxWidth: 360, lineHeight: 1.7, fontSize: 16 }}>From first solo to airline command — we guide you through every stage of your pilot career.</p>
           </div>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 20 }}>
           {[
-            { number: "01", title: "Web Design", description: "Award-worthy designs that stop the scroll, earn the click, and reflect the premium nature of your brand.", tags: ["UI/UX", "Figma", "Motion Design", "Responsive"] },
-            { number: "02", title: "Web Development", description: "Fast, secure, scalable Next.js websites — optimised for Core Web Vitals, AI search, and conversion from day one.", tags: ["Next.js", "TypeScript", "Vercel", "Sanity CMS"] },
-            { number: "03", title: "Brand Identity", description: "Visual systems that command attention and build instant trust — logo, typography, colour, and full brand guidelines.", tags: ["Logo", "Typography", "Colour System", "Guidelines"] },
+            { number: "01", title: "PPL", hours: "45+ hrs", description: "Private Pilot Licence — the first milestone. Master the fundamentals of flight and earn the freedom to fly.", tags: ["Single Engine", "VFR", "Solo Flight", "SACAA"] },
+            { number: "02", title: "CPL", hours: "200+ hrs", description: "Commercial Pilot Licence — your gateway to a professional aviation career. Build the hours and skill to fly for hire.", tags: ["Multi-Engine", "Night Rating", "IFR", "Hour Building"] },
+            { number: "03", title: "ATPL", hours: "1,500+ hrs", description: "Airline Transport Pilot Licence — the highest standard in aviation. Required to serve as Pilot-in-Command on commercial airliners.", tags: ["Airline Ready", "Type Rating", "Sim Training", "ICAO Compliant"] },
           ].map((s, i) => (
-            <ScrollReveal key={s.title} effect="fade-up" delay={i * 0.1}><ServiceCard {...s} /></ScrollReveal>
+            <ScrollReveal key={s.title} effect="fade-up" delay={i * 0.1}><ProgramCard {...s} /></ScrollReveal>
           ))}
         </div>
       </Section>
 
-      {/* ── WORK ─────────────────────────────────────────────────── */}
-      <Section id="work" style={{ paddingTop: 0 }}>
+      {/* ── COST COMPARISON ─────────────────────────────────────── */}
+      <Section id="cost" style={{ paddingTop: 0 }}>
         <ScrollReveal effect="fade-up">
           <div
             className="flex flex-col md:flex-row md:items-end md:justify-between"
             style={{ marginBottom: 64, gap: 24 }}
           >
             <div>
-              <Eyebrow label="Work" />
-              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>Proof in<br /><span style={{ color: ACCENT }}>Results.</span></h2>
+              <Eyebrow label="Cost Comparison" />
+              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>Train Smart,<br /><span style={{ color: ACCENT }}>Save More.</span></h2>
             </div>
-            <a href="/work" style={{ padding: "14px 32px", border: `1px solid ${BORDER}`, borderRadius: 100, fontSize: 14, fontWeight: 600, color: "#fff", flexShrink: 0 }}>View all work →</a>
+            <p style={{ color: MUTED, maxWidth: 360, lineHeight: 1.7, fontSize: 16 }}>Same ICAO-compliant standard. A fraction of the price. With better flying weather.</p>
           </div>
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: 20 }}>
+        <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: 20 }}>
           {[
-            { tag: "Web Design · Development", title: "Premium brand with a site that converts cold traffic", outcome: "2.8× increase in qualified leads within 60 days", gradient: "linear-gradient(135deg, #1a1f35 0%, #0d1117 100%)" },
-            { tag: "Brand Identity · Web", title: "Full rebrand and launch for a scaling service business", outcome: "94% of new leads now arrive through the website", gradient: `linear-gradient(135deg, rgba(196,84,26,0.22) 0%, #0d1117 100%)` },
+            { country: "South Africa", cost: "~$45k", days: "300+ days/yr", highlight: true },
+            { country: "United Kingdom", cost: "~$105k", days: "180 days/yr", highlight: false },
+            { country: "United States", cost: "~$90k", days: "220 days/yr", highlight: false },
           ].map((c, i) => (
-            <ScrollReveal key={c.title} effect="fade-up" delay={i * 0.1}><CaseCard {...c} /></ScrollReveal>
+            <ScrollReveal key={c.country} effect="fade-up" delay={i * 0.1}>
+              <CostCard {...c} />
+            </ScrollReveal>
           ))}
         </div>
       </Section>
@@ -399,17 +597,23 @@ export default function Home() {
         <Section id="process" style={{ paddingTop: 40 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(48px, 6vw, 100px)", alignItems: "start" }}>
             <ScrollReveal effect="fade-up">
-              <Eyebrow label="Process" />
-              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>How We<br /><span style={{ color: ACCENT }}>Work.</span></h2>
+              <Eyebrow label="How It Works" />
+              <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92 }}>Your Journey,<br /><span style={{ color: ACCENT }}>Guided.</span></h2>
+              <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.7, maxWidth: 380, marginTop: 32 }}>
+                We manage every step of the process so you arrive ready to fly — not buried in paperwork.
+              </p>
             </ScrollReveal>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
               {[
-                { number: "01", title: "Brief", description: "We learn your business, your goals, and your audience inside out. No guesswork — we build from a clear foundation of what success looks like for you." },
-                { number: "02", title: "Design", description: "We craft a visual direction that earns your sign-off fast. You see and approve the full homepage design before a single line of code is written." },
-                { number: "03", title: "Build", description: "Clean, fast, secure Next.js code with world-class animations — connected to your GHL CRM and GEO-optimised for AI search from day one." },
-                { number: "04", title: "Launch", description: "We handle domain, hosting, analytics, and GEO setup. You go live with a site that works as hard as you do. We don't disappear after launch." },
+                { number: "01", title: "Initial Consultation", description: "We assess your goals, experience, and timeline. You get a clear, honest picture of what your training journey looks like before committing to anything." },
+                { number: "02", title: "Flight School Matching", description: "We match you with a SACAA-accredited school that fits your programme, budget, and location preferences." },
+                { number: "03", title: "Visa Preparation", description: "We guide you through the South African study visa process — documentation, applications, and timelines handled alongside you." },
+                { number: "04", title: "Enrollment Coordination", description: "We liaise directly with the flight school to manage your enrollment, start date, and initial requirements." },
+                { number: "05", title: "Accommodation Logistics", description: "We source and vet appropriate accommodation near your training facility so you're settled before you arrive." },
+                { number: "06", title: "Ongoing Monitoring", description: "Throughout your training we stay in contact to ensure everything is on track and address any challenges as they arise." },
+                { number: "07", title: "Post-Training Licensing", description: "Once you pass your checkride, we assist with SACAA licence issuance and guide you through licence conversion for your home country if needed." },
               ].map((step, i) => (
-                <ScrollReveal key={step.number} effect="fade-up" delay={i * 0.05}>
+                <ScrollReveal key={step.number} effect="fade-up" delay={i * 0.04}>
                   <ProcessStep {...step} />
                 </ScrollReveal>
               ))}
@@ -418,55 +622,34 @@ export default function Home() {
         </Section>
       </div>
 
-      {/* ── ROTATING TESTIMONIALS ────────────────────────────────── */}
-      <RotatingTestimonials />
+      {/* ── CINEMATIC IMAGE STRIP ────────────────────────────────── */}
+      <CinematicStrip />
+
+      {/* ── WHY SA HIGHLIGHTS ────────────────────────────────────── */}
+      <HighlightStrip />
 
       {/* ── CONTACT ──────────────────────────────────────────────── */}
       <Section id="contact">
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(40px, 6vw, 80px)", alignItems: "start" }}>
           <ScrollReveal effect="fade-up">
             <Eyebrow label="Get Started" />
-            <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92, marginBottom: 32 }}>Ready to<br /><span style={{ color: ACCENT }}>Grow?</span></h2>
+            <h2 style={{ fontSize: "clamp(36px, 5vw, 72px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.92, marginBottom: 32, color: "#060C18" }}>Ready to<br /><span style={{ color: ACCENT }}>Fly?</span></h2>
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.7, maxWidth: 380, marginBottom: 48 }}>
-              Tell us about your business and what you want to achieve. We&rsquo;ll come back with a clear plan — no fluff, no hard sell.
+              Book your free 15-minute consultation. We&rsquo;ll answer your questions and map out the fastest route to your pilot licence.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 48}}>
-              {["Response within 24 hours", "Free initial consultation", "No lock-in contracts"].map(text => (
-                <div key={text} style={{ display: "flex", gap: 14, alignItems: "center", color: MUTED, fontSize: 15}}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 48 }}>
+              {["Free 15-minute consultation", "No obligation — just clarity", "Response within 24 hours"].map(text => (
+                <div key={text} style={{ display: "flex", gap: 14, alignItems: "center", color: MUTED, fontSize: 15 }}>
                   <span style={{ color: ACCENT, fontSize: 10, flexShrink: 0 }}>✦</span>{text}
                 </div>
               ))}
             </div>
-
-            <div>
-              <p style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Connect</p>
-              <div style={{ display: "flex", gap: 20 }}>
-                {[
-                  { label: "Instagram", url: "https://www.instagram.com/boldpiq/" },
-                  { label: "Facebook", url: "https://www.facebook.com/boldpiq" },
-                  { label: "Pinterest", url: "https://za.pinterest.com/boldpiq/" },
-                  { label: "LinkedIn", url: "https://www.linkedin.com/company/boldpiq/" },
-                ].map(s => (
-                  <motion.a
-                    key={s.label}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ color: "#fff" }}
-                    style={{ color: MUTED, fontSize: 14, textDecoration: "none" }}
-                  >
-                    {s.label}
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-            
           </ScrollReveal>
 
           <GHLBookingWidget
             src="https://link.zip360.co.za/widget/booking/2iYXsaTBfL5b7Y870XVX"
             id="2iYXsaTBfL5b7Y870XVX_home"
-            title="Book a Discovery Call"
+            title="Book a Free Consultation"
             defaultHeight={700}
             borderRadius={24}
             border={`1px solid ${BORDER}`}
