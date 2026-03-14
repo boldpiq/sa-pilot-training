@@ -59,14 +59,39 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 // ── Drifting clouds behind the plane ─────────────────────────────────────────
+// Three distinct 3-bulge cloud shapes
+const CLOUD_SHAPES = [
+  // Variant A — balanced, tall centre bump
+  <svg key="a" viewBox="0 0 200 75" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+    <rect x="14" y="52" width="172" height="23" rx="10" fill="rgba(6,12,24,1)" />
+    <ellipse cx="46"  cy="50" rx="30" ry="26" fill="rgba(6,12,24,1)" />
+    <ellipse cx="100" cy="32" rx="40" ry="36" fill="rgba(6,12,24,1)" />
+    <ellipse cx="158" cy="46" rx="32" ry="28" fill="rgba(6,12,24,1)" />
+  </svg>,
+  // Variant B — left-heavy, three clear bumps decreasing rightward
+  <svg key="b" viewBox="0 0 200 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+    <rect x="10" y="50" width="180" height="20" rx="9" fill="rgba(6,12,24,1)" />
+    <ellipse cx="52"  cy="38" rx="40" ry="34" fill="rgba(6,12,24,1)" />
+    <ellipse cx="116" cy="46" rx="34" ry="26" fill="rgba(6,12,24,1)" />
+    <ellipse cx="170" cy="50" rx="26" ry="20" fill="rgba(6,12,24,1)" />
+  </svg>,
+  // Variant C — three even compact bumps
+  <svg key="c" viewBox="0 0 180 65" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
+    <rect x="10" y="44" width="160" height="21" rx="9" fill="rgba(6,12,24,1)" />
+    <ellipse cx="40"  cy="42" rx="28" ry="24" fill="rgba(6,12,24,1)" />
+    <ellipse cx="90"  cy="32" rx="34" ry="28" fill="rgba(6,12,24,1)" />
+    <ellipse cx="142" cy="40" rx="28" ry="24" fill="rgba(6,12,24,1)" />
+  </svg>,
+]
+
 function CloudLayer() {
   const clouds = [
-    { top: "6%",  width: 340, opacity: 0.07, duration: 60, delay: 3 },
-    { top: "20%", width: 160, opacity: 0.05, duration: 80, delay: 22 },
-    { top: "11%", width: 480, opacity: 0.05, duration: 50, delay: 42 },
-    { top: "2%",  width: 120, opacity: 0.06, duration: 72, delay: 10 },
-    { top: "26%", width: 280, opacity: 0.07, duration: 65, delay: 58 },
-    { top: "15%", width: 200, opacity: 0.04, duration: 90, delay: 30 },
+    { top: "5%",  width: 340, opacity: 0.07, duration: 60, delay: 3,  variant: 0 },
+    { top: "21%", width: 160, opacity: 0.05, duration: 80, delay: 22, variant: 2 },
+    { top: "10%", width: 420, opacity: 0.05, duration: 52, delay: 42, variant: 1 },
+    { top: "2%",  width: 130, opacity: 0.06, duration: 72, delay: 10, variant: 2 },
+    { top: "27%", width: 280, opacity: 0.07, duration: 65, delay: 58, variant: 0 },
+    { top: "15%", width: 200, opacity: 0.05, duration: 88, delay: 30, variant: 1 },
   ]
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
@@ -77,15 +102,7 @@ function CloudLayer() {
           transition={{ duration: c.duration, delay: c.delay, repeat: Infinity, ease: "linear", repeatDelay: 0 }}
           style={{ position: "absolute", top: c.top, width: c.width, opacity: c.opacity }}
         >
-          <svg viewBox="0 0 320 90" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-            <ellipse cx="75"  cy="68" rx="75"  ry="28" fill="rgba(6,12,24,1)" />
-            <ellipse cx="155" cy="52" rx="80"  ry="42" fill="rgba(6,12,24,1)" />
-            <ellipse cx="240" cy="62" rx="80"  ry="32" fill="rgba(6,12,24,1)" />
-            <ellipse cx="120" cy="70" rx="90"  ry="22" fill="rgba(6,12,24,1)" />
-            <ellipse cx="200" cy="70" rx="85"  ry="22" fill="rgba(6,12,24,1)" />
-            <ellipse cx="50"  cy="72" rx="50"  ry="18" fill="rgba(6,12,24,1)" />
-            <ellipse cx="290" cy="72" rx="45"  ry="18" fill="rgba(6,12,24,1)" />
-          </svg>
+          {CLOUD_SHAPES[c.variant]}
         </motion.div>
       ))}
     </div>
