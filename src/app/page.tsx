@@ -72,9 +72,9 @@ function PropellerPlane() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 30 }}
+      initial={{ opacity: 0, x: "-115vw" }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 3, delay: 1.2, ease: "easeOut" }}
+      transition={{ duration: 2.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: "absolute",
         right: "4%",
