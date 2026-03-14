@@ -284,7 +284,7 @@ export function CookieConsent() {
 
                   <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, marginTop: 16, lineHeight: 1.6 }}>
                     Data collected is used to improve services, send marketing communications where consented, and comply with legal requirements (POPIA, GDPR). You may withdraw consent at any time.{" "}
-                    <Link href="/privacy" style={{ color: ACCENT, textDecoration: "underline" }}>Learn more</Link>
+                    <Link href="/cookies" style={{ color: ACCENT, textDecoration: "underline" }}>Learn more</Link>
                   </p>
                 </div>
               )}
