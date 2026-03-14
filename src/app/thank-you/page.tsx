@@ -375,7 +375,7 @@ export default function ThankYouPage() {
             marginBottom: 28,
             fontSize: 13,
             fontWeight: 600,
-            color: "#FFB380",
+            color: "#060C18",
             letterSpacing: "0.04em",
           }}
         >
@@ -402,7 +402,7 @@ export default function ThankYouPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          style={{ fontSize: 14, color: "rgba(255,255,255,0.35)", marginBottom: 52 }}
+          style={{ fontSize: 14, color: MUTED, marginBottom: 52 }}
         >
           We look forward to speaking with you.
         </motion.p>
@@ -435,11 +435,11 @@ export default function ThankYouPage() {
           </Link>
           <Link href="/services">
             <motion.div
-              whileHover={{ borderColor: "rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.05)" }}
+              whileHover={{ borderColor: "rgba(6,12,24,0.3)", background: "rgba(6,12,24,0.05)" }}
               style={{
                 padding: "16px 42px",
                 border: `1px solid ${BORDER}`,
-                color: "#fff",
+                color: "#060C18",
                 borderRadius: 100,
                 fontWeight: 600,
                 fontSize: 15,

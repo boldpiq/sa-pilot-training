@@ -142,12 +142,15 @@ function PropellerPlane() {
             stroke="rgba(6,12,24,0.10)" strokeWidth="1.5" fill="none"
           />
 
-          {/* Cabin window 1 */}
-          <ellipse cx="420" cy="84" rx="17" ry="8" fill="rgba(20,50,100,0.10)" />
+          {/* Cabin window 1 — aft of cockpit */}
+          <rect x="404" y="75" width="24" height="16" rx="5" ry="5" fill="rgba(20,50,100,0.14)" />
+          <rect x="406" y="76" width="10" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.07)" />
           {/* Cabin window 2 */}
-          <ellipse cx="368" cy="86" rx="14" ry="7" fill="rgba(20,50,100,0.09)" />
+          <rect x="353" y="76" width="21" height="15" rx="5" ry="5" fill="rgba(20,50,100,0.12)" />
+          <rect x="355" y="77" width="9" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.06)" />
           {/* Cabin window 3 */}
-          <ellipse cx="316" cy="88" rx="11" ry="6" fill="rgba(20,50,100,0.08)" />
+          <rect x="304" y="78" width="18" height="14" rx="4" ry="4" fill="rgba(20,50,100,0.10)" />
+          <rect x="306" y="79" width="7" height="4" rx="2" ry="2" fill="rgba(255,255,255,0.05)" />
 
           {/* Fuselage spine / top highlight */}
           <path
