@@ -194,14 +194,14 @@ function PropellerPlane() {
           />
 
           {/* Cabin window 1 — aft of cockpit */}
-          <rect x="404" y="75" width="24" height="16" rx="5" ry="5" fill="rgba(20,50,100,0.14)" />
-          <rect x="406" y="76" width="10" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.07)" />
+          <rect x="404" y="83" width="24" height="16" rx="5" ry="5" fill="rgba(20,50,100,0.14)" />
+          <rect x="406" y="84" width="10" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.07)" />
           {/* Cabin window 2 */}
-          <rect x="353" y="76" width="21" height="15" rx="5" ry="5" fill="rgba(20,50,100,0.12)" />
-          <rect x="355" y="77" width="9" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.06)" />
+          <rect x="353" y="84" width="21" height="15" rx="5" ry="5" fill="rgba(20,50,100,0.12)" />
+          <rect x="355" y="85" width="9" height="5" rx="2" ry="2" fill="rgba(255,255,255,0.06)" />
           {/* Cabin window 3 */}
-          <rect x="304" y="78" width="18" height="14" rx="4" ry="4" fill="rgba(20,50,100,0.10)" />
-          <rect x="306" y="79" width="7" height="4" rx="2" ry="2" fill="rgba(255,255,255,0.05)" />
+          <rect x="304" y="86" width="18" height="14" rx="4" ry="4" fill="rgba(20,50,100,0.10)" />
+          <rect x="306" y="87" width="7" height="4" rx="2" ry="2" fill="rgba(255,255,255,0.05)" />
 
           {/* Fuselage spine / top highlight */}
           <path
