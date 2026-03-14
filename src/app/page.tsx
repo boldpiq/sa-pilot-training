@@ -258,14 +258,14 @@ function PropellerPlane() {
               dur="1.2s"
               repeatCount="indefinite"
             />
+            {/* Blade 1 — 0° (up) */}
+            <path d="M 519 84 C 516 70 517 56 522 50 C 527 56 528 70 525 84 Z" fill="rgba(6,12,24,0.17)" />
+            {/* Blade 2 — 120° */}
+            <path d="M 519 84 C 516 70 517 56 522 50 C 527 56 528 70 525 84 Z" fill="rgba(6,12,24,0.17)" transform="rotate(120, 522, 90)" />
+            {/* Blade 3 — 240° */}
+            <path d="M 519 84 C 516 70 517 56 522 50 C 527 56 528 70 525 84 Z" fill="rgba(6,12,24,0.17)" transform="rotate(240, 522, 90)" />
             {/* Spinner hub */}
             <ellipse cx="522" cy="90" rx="7" ry="7" fill="rgba(6,12,24,0.20)" />
-            {/* Blade 1 — up */}
-            <path d="M 522 83 Q 519 67 518 52 Q 522 48 526 52 Q 525 67 522 83 Z" fill="rgba(6,12,24,0.17)" />
-            {/* Blade 2 — lower right */}
-            <path d="M 527 94 Q 540 107 551 120 Q 547 124 543 122 Q 534 110 526 94 Z" fill="rgba(6,12,24,0.17)" />
-            {/* Blade 3 — lower left */}
-            <path d="M 517 94 Q 504 107 493 120 Q 497 124 501 122 Q 510 110 518 94 Z" fill="rgba(6,12,24,0.17)" />
           </g>
         </svg>
       </div>
