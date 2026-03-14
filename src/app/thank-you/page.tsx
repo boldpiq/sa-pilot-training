@@ -375,7 +375,7 @@ export default function ThankYouPage() {
             marginBottom: 28,
             fontSize: 13,
             fontWeight: 600,
-            color: "#060C18",
+            color: ACCENT,
             letterSpacing: "0.04em",
           }}
         >
