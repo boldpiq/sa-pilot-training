@@ -18,7 +18,7 @@ const geist = Geist({
 
 const SITE_URL = "https://www.boldpiq.com"
 const OG_IMAGE = "https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6970aa72d4fb90fe7dc9068b.png"
-const FAVICON = "https://assets.cdn.filesafe.space/2YVSGppZ3t1nNSl74HPu/media/6970121015885e63271908fa.png"
+const FAVICON = "/flight.svg"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: FAVICON, type: "image/png" },
+      { url: FAVICON, type: "image/svg+xml" },
     ],
     shortcut: FAVICON,
     apple: FAVICON,
@@ -157,9 +157,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#0B0F1C" />
-        <meta name="msapplication-TileColor" content="#C4541A" />
-        <link rel="icon" href={FAVICON} type="image/png" />
+        <meta name="theme-color" content="#060C18" />
+        <meta name="msapplication-TileColor" content="#C8181A" />
+        <link rel="icon" href={FAVICON} type="image/svg+xml" />
         <link rel="apple-touch-icon" href={FAVICON} />
         <script
           type="application/ld+json"
