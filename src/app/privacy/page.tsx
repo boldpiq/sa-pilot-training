@@ -3,17 +3,17 @@ import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import { Footer } from "@/components/layout/Footer"
 import { LegalNav } from "@/components/legal/LegalNav"
 
-const BG = "#0B0F1C"
-const ACCENT = "#C4541A"
-const MUTED = "rgba(255,255,255,0.45)"
-const BORDER = "rgba(255,255,255,0.08)"
+const BG = "#FFFFFF"
+const ACCENT = "#C8181A"
+const MUTED = "rgba(6,12,24,0.52)"
+const BORDER = "rgba(6,12,24,0.10)"
 
-const H2Style = { fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 12, color: "#fff" }
+const H2Style = { fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 12, color: "#060C18" }
 const BodyStyle = { color: MUTED, fontSize: 15, lineHeight: 1.75, whiteSpace: "pre-line" as const }
 const SectionStyle = { borderBottom: `1px solid ${BORDER}`, paddingBottom: 32 }
 
 const sections = [
-  { title: "1. Scope", body: "This Privacy Policy applies to all users of our website www.boldpiq.com, our services, and any related communications. It covers personal data processed through our systems and by our trusted third-party service providers." },
+  { title: "1. Scope", body: "This Privacy Policy applies to all users of our website www.sapilottraining.co.za, our services, and any related communications. It covers personal data processed through our systems and by our trusted third-party service providers." },
   {
     title: "2. Information We Collect",
     body: `We may collect the following categories of information:
@@ -85,7 +85,7 @@ Portability – Receive your data in a structured, machine-readable format.
 Objection – Object to processing based on legitimate interests or for direct marketing.
 Opt-Out (CCPA) – Opt out of the sale of personal information (we do not sell data).
 
-To exercise any of these rights, please contact us at support@boldpiq.com.`,
+To exercise any of these rights, please contact us at info@sapilottraining.co.za.`,
   },
   {
     title: "10. Cookies",
@@ -105,13 +105,13 @@ To exercise any of these rights, please contact us at support@boldpiq.com.`,
   },
   {
     title: "14. Contact",
-    body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: support@boldpiq.com\nWebsite: www.boldpiq.com",
+    body: "For any privacy-related queries or to exercise your rights, please contact our Information Officer at:\nEmail: info@sapilottraining.co.za\nWebsite: www.sapilottraining.co.za",
   },
 ]
 
 export default function PrivacyPage() {
   return (
-    <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
+    <main style={{ background: BG, color: "#060C18", minHeight: "100vh" }}>
       <section style={{ padding: "clamp(100px, 14vw, 140px) clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 860, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32 }}>
@@ -121,10 +121,10 @@ export default function PrivacyPage() {
           <h1 style={{ fontSize: "clamp(36px, 6vw, 80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.9, marginBottom: 16 }}>
             Privacy<br /><span style={{ color: ACCENT }}>Policy</span>
           </h1>
-          <p style={{ color: MUTED, fontSize: 13, marginBottom: 8, opacity: 0.6 }}>www.boldpiq.com/privacy</p>
+          <p style={{ color: MUTED, fontSize: 13, marginBottom: 8, opacity: 0.6 }}>www.sapilottraining.co.za/privacy</p>
           <p style={{ color: MUTED, fontSize: 14, marginBottom: 16 }}>Effective Date: 05 September 2025 · Last Updated: 05 September 2025</p>
           <p style={{ color: MUTED, fontSize: 14, marginBottom: 48, lineHeight: 1.65 }}>
-            BoldPiq (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting the privacy of our clients and website users (&ldquo;you&rdquo; or &ldquo;your&rdquo;). This Privacy Policy explains how we collect, use, store, and share personal data in compliance with the Protection of Personal Information Act (POPIA) of South Africa, the General Data Protection Regulation (GDPR/UK GDPR), the California Consumer Privacy Act (CCPA/CPRA), the Brazilian LGPD, and other applicable privacy laws.
+            SA Pilot Training (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting the privacy of our clients and website users (&ldquo;you&rdquo; or &ldquo;your&rdquo;). This Privacy Policy explains how we collect, use, store, and share personal data in compliance with the Protection of Personal Information Act (POPIA) of South Africa, the General Data Protection Regulation (GDPR/UK GDPR), the California Consumer Privacy Act (CCPA/CPRA), the Brazilian LGPD, and other applicable privacy laws.
           </p>
           <LegalNav />
         </ScrollReveal>

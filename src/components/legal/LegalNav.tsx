@@ -10,9 +10,9 @@ const links = [
   { label: "Data Processing Agreement", href: "/dpa" },
 ]
 
-const ACCENT = "#C4541A"
-const MUTED = "rgba(255,255,255,0.45)"
-const BORDER = "rgba(255,255,255,0.08)"
+const ACCENT = "#C8181A"
+const MUTED = "rgba(6,12,24,0.52)"
+const BORDER = "rgba(6,12,24,0.10)"
 
 export function LegalNav() {
   const pathname = usePathname()
@@ -25,7 +25,7 @@ export function LegalNav() {
       padding: "16px 20px",
       border: `1px solid ${BORDER}`,
       borderRadius: 12,
-      background: "rgba(255,255,255,0.03)",
+      background: "rgba(6,12,24,0.03)",
     }}>
       {links.map((link, i) => (
         <span key={link.href} style={{ display: "flex", alignItems: "center", gap: 4 }}>
