@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 const links = [
   { label: "Terms of Service", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy" },
+  { label: "Cookie Policy", href: "/cookies" },
   { label: "Refund Policy", href: "/refund" },
   { label: "PAIA Manual", href: "/paia" },
   { label: "Data Processing Agreement", href: "/dpa" },

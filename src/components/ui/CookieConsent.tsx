@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from "motion/react"
 import Link from "next/link"
 
 const BG_BANNER = "rgba(11,15,28,0.97)"
-const ACCENT = "#C4541A"
+const ACCENT = "#C8181A"
 const MUTED = "rgba(255,255,255,0.5)"
 const BORDER = "rgba(255,255,255,0.1)"
-const STORAGE_KEY = "boldpiq_cookie_consent"
+const STORAGE_KEY = "sapt_cookie_consent"
 
 type ConsentState = "all" | "essential" | null
 
@@ -112,8 +112,8 @@ export function CookieConsent() {
                   <div style={{ display: "flex", gap: 16, alignItems: "flex-start", flex: 1 }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: `rgba(196,84,26,0.15)`,
-                      border: `1px solid rgba(196,84,26,0.3)`,
+                      background: `rgba(200,24,26,0.15)`,
+                      border: `1px solid rgba(200,24,26,0.3)`,
                       display: "flex", alignItems: "center", justifyContent: "center",
                       fontSize: 18, flexShrink: 0,
                     }}>
@@ -124,19 +124,19 @@ export function CookieConsent() {
                         We value your privacy
                       </p>
                       <p style={{ color: MUTED, fontSize: 13, lineHeight: 1.65, maxWidth: 720 }}>
-                        Boldpiq uses cookies to enhance your experience, analyse site traffic, and deliver relevant content. We collect usage data, IP addresses, and browser information to improve our platform and marketing. By continuing, you consent to our use of cookies.{" "}
+                        SA Pilot Training uses cookies to enhance your experience, analyse site traffic, and deliver relevant content. We collect usage data, IP addresses, and browser information to improve our platform and communications. By continuing, you consent to our use of cookies.{" "}
+                        <Link
+                          href="/cookies"
+                          style={{ color: ACCENT, textDecoration: "underline", textUnderlineOffset: 3 }}
+                        >
+                          Cookie Policy
+                        </Link>
+                        {" · "}
                         <Link
                           href="/privacy"
                           style={{ color: ACCENT, textDecoration: "underline", textUnderlineOffset: 3 }}
                         >
                           Privacy Policy
-                        </Link>
-                        {" · "}
-                        <Link
-                          href="/terms"
-                          style={{ color: ACCENT, textDecoration: "underline", textUnderlineOffset: 3 }}
-                        >
-                          Terms
                         </Link>
                       </p>
                     </div>
@@ -179,7 +179,7 @@ export function CookieConsent() {
                       Essential only
                     </button>
                     <motion.button
-                      whileHover={{ background: "#D4601F" }}
+                      whileHover={{ background: "#B01416" }}
                       whileTap={{ scale: 0.97 }}
                       onClick={acceptAll}
                       style={{
@@ -263,7 +263,7 @@ export function CookieConsent() {
                       Essential only
                     </button>
                     <motion.button
-                      whileHover={{ background: "#D4601F" }}
+                      whileHover={{ background: "#B01416" }}
                       whileTap={{ scale: 0.97 }}
                       onClick={saveCustom}
                       style={{
@@ -324,7 +324,7 @@ function CookieToggle({
         <p style={{ fontWeight: 600, fontSize: 14, color: "#fff", marginBottom: 4 }}>
           {title}
           {locked && (
-            <span style={{ marginLeft: 8, fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 100, background: "rgba(196,84,26,0.15)", color: ACCENT, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            <span style={{ marginLeft: 8, fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 100, background: "rgba(200,24,26,0.15)", color: ACCENT, letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Always on
             </span>
           )}
