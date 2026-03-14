@@ -3,15 +3,15 @@ import Link from "next/link"
 import { ScrollReveal } from "@/components/scroll/ScrollReveal"
 import { Footer } from "@/components/layout/Footer"
 
-const BG = "#FFFFFF"
-const ACCENT = "#C8181A"
-const MUTED = "rgba(6,12,24,0.52)"
-const BORDER = "rgba(6,12,24,0.10)"
-const SURFACE = "rgba(6,12,24,0.04)"
+const BG = "#0B0F1C"
+const ACCENT = "#C4541A"
+const MUTED = "rgba(255,255,255,0.45)"
+const BORDER = "rgba(255,255,255,0.08)"
+const SURFACE = "rgba(255,255,255,0.04)"
 
 export default function RefundPage() {
   return (
-    <main style={{ background: BG, color: "#060C18", minHeight: "100vh" }}>
+    <main style={{ background: BG, color: "#fff", minHeight: "100vh" }}>
       <section style={{ padding: "clamp(100px, 14vw, 140px) clamp(20px, 4vw, 48px) clamp(60px, 8vw, 100px)", maxWidth: 1100, margin: "0 auto" }}>
         <ScrollReveal effect="fade-up">
           <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 32 }}>
@@ -21,14 +21,14 @@ export default function RefundPage() {
           <h1 style={{ fontSize: "clamp(36px, 6vw, 80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 0.9, marginBottom: 16 }}>
             Refund &amp;<br /><span style={{ color: ACCENT }}>Cancellation</span>
           </h1>
-          <p style={{ color: MUTED, fontSize: 13, marginBottom: 8, opacity: 0.6 }}>www.sapilottraining.co.za/refund</p>
+          <p style={{ color: MUTED, fontSize: 13, marginBottom: 8, opacity: 0.6 }}>www.boldpiq.com/refund</p>
           <p style={{ color: MUTED, fontSize: 14, marginBottom: 16 }}>Effective Date: 05 September 2025 · Last Updated: 05 September 2025</p>
           <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.65, marginBottom: 48 }}>
             1. REFUND &amp; CANCELLATION POLICY{"\n"}
-            At SA Pilot Training, we prioritize transparency and compliance. This document serves as a comprehensive notice regarding our Terms of Service, Privacy Policy, Return Policy, POPIA Compliance. By accessing our website, www.sapilottraining.co.za, and utilizing our services, you agree to the terms outlined below.{"\n\n"}
-            SA Pilot Training – Refund &amp; Cancellation Policy{"\n\n"}
-            Applies to all SA Pilot Training services, including but not limited to:{"\n"}
-            Website Design &amp; Development · Branding &amp; Identity Design · E-Commerce Development · Promotional &amp; Brand Videos · Digital Marketing Campaigns (email, SMS, paid ads, social media) · Consulting, Strategy, and Training Services · Any future services added to SA Pilot Training&apos;s offerings
+            At Boldpiq, we prioritize transparency and compliance. This document serves as a comprehensive notice regarding our Terms of Service, Privacy Policy, Return Policy, POPIA Compliance. By accessing our website, www.boldpiq.com, and utilizing our services, you agree to the terms outlined below.{"\n\n"}
+            Boldpiq – Refund &amp; Cancellation Policy{"\n\n"}
+            Applies to all BoldPiq services, including but not limited to:{"\n"}
+            Website Design &amp; Development · Branding &amp; Identity Design · E-Commerce Development · Promotional &amp; Brand Videos · Digital Marketing Campaigns (email, SMS, paid ads, social media) · Consulting, Strategy, and Training Services · Any future services added to BoldPiq&apos;s offerings
           </p>
         </ScrollReveal>
 
@@ -60,16 +60,16 @@ No refunds after kickoff or once deliverables/campaigns are in progress.`,
                 body: `(e.g., brand videos, complex funnels, custom e-commerce, marketing retainers, enterprise consulting)
 
 Due to significant upfront resource allocation, no refunds are offered once the contract is signed and the kickoff has taken place.
-At SA Pilot Training's discretion, a partial credit of up to 30% may be issued if cancellation occurs before the first draft, deliverable, or campaign launch. Credit is valid for 3 months.
+At BoldPiq's discretion, a partial credit of up to 30% may be issued if cancellation occurs before the first draft, deliverable, or campaign launch. Credit is valid for 3 months.
 Deposits, consultations, strategy sessions, and campaign retainers are non-refundable.`,
               },
               {
                 title: "4. General Terms (All Services & Packages)",
-                body: `Refund requests must be submitted via the SA Pilot Training Refund Request Form below.
+                body: `Refund requests must be submitted via the BoldPiq Refund Request Form below.
 Requests are reviewed within 3 business days.
 Approved refunds will be processed within 7 business days to the original payment method.
 Chargebacks or disputes filed outside this process will result in immediate account suspension and termination of services.
-SA Pilot Training reserves the right to update this policy as new services are introduced; the version in effect at the time of purchase governs all transactions.`,
+BoldPiq reserves the right to update this policy as new services are introduced; the version in effect at the time of purchase governs all transactions.`,
               },
             ].map(section => (
               <div key={section.title} style={{ borderBottom: `1px solid ${BORDER}`, paddingBottom: 32 }}>
@@ -127,11 +127,11 @@ SA Pilot Training reserves the right to update this policy as new services are i
               data-activation-value=""
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
-              data-form-name="Return Form SA Pilot Training"
+              data-form-name="Return Form Boldpiq"
               data-height="959"
               data-layout-iframe-id="inline-4R1UTmh6UWXxjgxRbuYj"
               data-form-id="4R1UTmh6UWXxjgxRbuYj"
-              title="Return Form SA Pilot Training"
+              title="Return Form Boldpiq"
               allow="camera; microphone; autoplay; encrypted-media; fullscreen"
             />
           </div>

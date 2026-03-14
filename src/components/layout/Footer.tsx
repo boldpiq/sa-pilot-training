@@ -2,16 +2,16 @@
 import Link from "next/link"
 import Image from "next/image"
 
-const BG = "#060C18"
-const ACCENT = "#C8181A"
-const MUTED = "rgba(255,255,255,0.55)"
-const BORDER = "rgba(255,255,255,0.10)"
+const BG = "#0B0F1C"
+const ACCENT = "#C4541A"
+const MUTED = "rgba(255,255,255,0.45)"
+const BORDER = "rgba(255,255,255,0.08)"
 
 const socialLinks = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "WhatsApp", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/boldpiq/" },
+  { label: "Facebook", href: "https://www.facebook.com/boldpiq" },
+  { label: "Pinterest", href: "https://za.pinterest.com/boldpiq/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/boldpiq/" },
 ]
 
 const legalLinks = [
@@ -40,10 +40,10 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "inline-block", marginBottom: 12 }}>
-              <Image src="/flight.svg" alt="SA Pilot Training" width={80} height={80} style={{ height: 80, width: 80 }} />
+              <Image src="/logo.svg" alt="BoldPiq" width={81} height={120} style={{ height: 120, width: "auto" }} />
             </Link>
             <p style={{ color: MUTED, fontSize: 13, lineHeight: 1.65, maxWidth: 280 }}>
-              Expert guidance for international student pilots training in South Africa.
+              High-performance websites that attract, convert, and retain.
             </p>
           </div>
 
@@ -52,11 +52,11 @@ export function Footer() {
             <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Navigation</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
-                { label: "Programs", href: "/work" },
-                { label: "Training", href: "/services" },
+                { label: "Work", href: "/work" },
+                { label: "Services", href: "/services" },
                 { label: "About", href: "/about" },
                 { label: "Contact", href: "/contact" },
-                { label: "Book Consultation", href: "/contact" },
+                { label: "Book a Call", href: "/contact" },
               ].map(item => (
                 <Link key={item.label} href={item.href} className="footer-nav-link-orange" style={{ color: MUTED, fontSize: 14, fontWeight: 500, textDecoration: "none" }}>
                   {item.label}
@@ -67,7 +67,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Follow Us</p>
+            <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Connect</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>
               {socialLinks.map(s => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>
@@ -89,17 +89,18 @@ export function Footer() {
                 letterSpacing: "-0.01em",
               }}
             >
-              Book Consultation
+              Start a Project
             </Link>
           </div>
 
-          {/* Contact */}
+          {/* Stay in touch */}
           <div>
-            <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Get In Touch</p>
+            <p style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Stay in Touch</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <a href="mailto:info@sapilottraining.co.za" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>info@sapilottraining.co.za</a>
-              <a href="tel:+27000000000" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>+27 (0) 00 000 0000</a>
-              <a href="https://api.whatsapp.com/send/?phone=27000000000" target="_blank" rel="noopener noreferrer" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>WhatsApp Us</a>
+              <a href="mailto:support@boldpiq.com" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>support@boldpiq.com</a>
+              <a href="mailto:team@boldpiq.com" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>team@boldpiq.com</a>
+              <a href="tel:+27608326083" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>+27 60 832 6083</a>
+              <a href="https://api.whatsapp.com/send/?phone=27608326083&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="footer-social-link" style={{ color: MUTED, fontSize: 14, textDecoration: "none", transition: "color 0.2s" }}>WhatsApp</a>
             </div>
           </div>
         </div>
@@ -127,11 +128,11 @@ export function Footer() {
             ))}
           </div>
           <p style={{ color: MUTED, fontSize: 12, opacity: 0.6 }}>
-            © {new Date().getFullYear()} SA Pilot Training. All rights reserved. · SACAA-Accredited &middot; ICAO-Compliant
+            © {new Date().getFullYear()} BoldPiq. All rights reserved. · Built with Next.js &amp; Vercel
           </p>
         </div>
       </div>
-      <style>{`.footer-social-link:hover, .footer-nav-link-orange:hover, .footer-nav-link:hover { color: #fff !important; }`}</style>
+      <style>{`.footer-social-link:hover { color: #fff !important; }`}</style>
     </footer>
   )
 }

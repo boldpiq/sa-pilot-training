@@ -4,10 +4,10 @@ import { motion, useAnimationFrame } from "motion/react"
 import Link from "next/link"
 import { Footer } from "@/components/layout/Footer"
 
-const BG = "#FFFFFF"
-const ACCENT = "#C8181A"
-const MUTED = "rgba(6,12,24,0.5)"
-const BORDER = "rgba(6,12,24,0.1)"
+const BG = "#0B0F1C"
+const ACCENT = "#C4541A"
+const MUTED = "rgba(255,255,255,0.45)"
+const BORDER = "rgba(255,255,255,0.08)"
 
 // ── Confetti particle ──────────────────────────────────────────────────────
 interface Particle {
@@ -27,10 +27,10 @@ interface Particle {
 }
 
 const COLORS = [
-  "#C8181A", "#D41A1A", "#E82020",
-  "#FF4444", "#FF6666", "#FF8888",
+  "#C4541A", "#D4601F", "#E8732A",
+  "#FF9A5C", "#FFB380", "#FFC89A",
   "#FFFFFF", "rgba(255,255,255,0.7)",
-  "#CC1C1C", "#AA1010",
+  "#FF6B35", "#F7931E",
 ]
 
 function randomBetween(min: number, max: number) {
@@ -269,13 +269,13 @@ export default function ThankYouPage() {
   }, [])
 
   return (
-    <main style={{ background: BG, color: "#060C18", minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+    <main style={{ background: BG, color: "#fff", minHeight: "100vh", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
 
       {/* Confetti canvas — full viewport */}
       <ConfettiCanvas />
 
       {/* Background layers */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,24,26,0.16) 0%, transparent 65%)` }} />
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: `radial-gradient(ellipse 70% 60% at 50% 40%, rgba(196,84,26,0.18) 0%, transparent 65%)` }} />
       <FloatingOrbs />
       <Sparkles />
 
@@ -297,7 +297,7 @@ export default function ThankYouPage() {
         {/* Check icon with pulse ring */}
         <div style={{ position: "relative", marginBottom: 48 }}>
           <motion.div
-            animate={{ scale: [1, 1.12, 1], boxShadow: [`0 0 40px rgba(200,24,26,0.4)`, `0 0 80px rgba(200,24,26,0.7)`, `0 0 40px rgba(200,24,26,0.4)`] }}
+            animate={{ scale: [1, 1.12, 1], boxShadow: [`0 0 40px rgba(196,84,26,0.4)`, `0 0 80px rgba(196,84,26,0.7)`, `0 0 40px rgba(196,84,26,0.4)`] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -370,8 +370,8 @@ export default function ThankYouPage() {
             gap: 10,
             padding: "8px 20px",
             borderRadius: 100,
-            background: `rgba(200,24,26,0.15)`,
-            border: `1px solid rgba(200,24,26,0.35)`,
+            background: `rgba(196,84,26,0.15)`,
+            border: `1px solid rgba(196,84,26,0.35)`,
             marginBottom: 28,
             fontSize: 13,
             fontWeight: 600,
@@ -416,7 +416,7 @@ export default function ThankYouPage() {
         >
           <Link href="/">
             <motion.div
-              whileHover={{ scale: 1.05, background: "#D4601F", boxShadow: `0 8px 40px rgba(200,24,26,0.5)` }}
+              whileHover={{ scale: 1.05, background: "#D4601F", boxShadow: `0 8px 40px rgba(196,84,26,0.5)` }}
               whileTap={{ scale: 0.97 }}
               style={{
                 padding: "16px 42px",
@@ -426,7 +426,7 @@ export default function ThankYouPage() {
                 fontWeight: 700,
                 fontSize: 15,
                 cursor: "pointer",
-                boxShadow: `0 4px 24px rgba(200,24,26,0.35)`,
+                boxShadow: `0 4px 24px rgba(196,84,26,0.35)`,
                 transition: "box-shadow 0.3s ease",
               }}
             >

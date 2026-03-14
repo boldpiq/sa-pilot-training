@@ -19,17 +19,17 @@ interface NavigationProps {
 }
 
 const defaultItems: NavItem[] = [
-  { label: "Programs", href: "/work" },
-  { label: "Training", href: "/services" },
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ]
 
 const socialLinks = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "WhatsApp", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/boldpiq/" },
+  { label: "Facebook", href: "https://www.facebook.com/boldpiq" },
+  { label: "Pinterest", href: "https://za.pinterest.com/boldpiq/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/boldpiq/" },
 ]
 
 
@@ -50,15 +50,15 @@ function MenuGlow() {
   })
   return (
     <>
-      <div ref={ref1} style={{ position: "absolute", inset: -160, pointerEvents: "none", background: "radial-gradient(ellipse 55% 48% at 60% 40%, rgba(200,24,26,0.07) 0%, transparent 68%)", willChange: "transform" }} />
-      <div ref={ref2} style={{ position: "absolute", inset: -120, pointerEvents: "none", background: "radial-gradient(ellipse 42% 38% at 38% 60%, rgba(200,24,26,0.04) 0%, transparent 62%)", willChange: "transform" }} />
+      <div ref={ref1} style={{ position: "absolute", inset: -160, pointerEvents: "none", background: "radial-gradient(ellipse 55% 48% at 60% 40%, rgba(196,84,26,0.13) 0%, transparent 68%)", willChange: "transform" }} />
+      <div ref={ref2} style={{ position: "absolute", inset: -120, pointerEvents: "none", background: "radial-gradient(ellipse 42% 38% at 38% 60%, rgba(196,84,26,0.07) 0%, transparent 62%)", willChange: "transform" }} />
     </>
   )
 }
 
 export function Navigation({
   items = defaultItems,
-  ctaLabel = "Book Consultation",
+  ctaLabel = "Get in touch",
   ctaHref = "/contact",
   theme = "dark",
 }: NavigationProps) {
@@ -79,16 +79,12 @@ export function Navigation({
     return () => { document.body.style.overflow = "" }
   }, [open])
 
-  // Header bar always stays dark
-  const fg = "#fff"
-  const bg = "rgba(6,12,24,0.97)"
-  const ACCENT = "#C8181A"
+  const isDark = theme === "dark"
+  const fg = isDark ? "#fff" : "#111"
+  const bg = isDark ? "rgba(0,0,0,0.96)" : "rgba(255,255,255,0.96)"
+  const ACCENT = "#C4541A"
   const MUTED = "rgba(255,255,255,0.45)"
   const BORDER = "rgba(255,255,255,0.08)"
-  // Mobile popout menu uses light/white theme
-  const menuFg = "#060C18"
-  const menuMuted = "rgba(6,12,24,0.62)"
-  const menuBorder = "rgba(6,12,24,0.10)"
 
   return (
     <>
@@ -106,16 +102,16 @@ export function Navigation({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          background: bg,
-          borderBottom: `1px solid rgba(255,255,255,0.06)`,
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          background: scrolled ? bg : "transparent",
+          borderBottom: scrolled ? `1px solid ${isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"}` : "none",
           transition: "background 0.3s, border-color 0.3s, backdrop-filter 0.3s",
         }}
       >
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-          <Image src="/flight.svg" alt="SA Pilot Training" width={64} height={64} style={{ height: 64, width: 64 }} priority />
+          <Image src="/BoldPiqLogo.svg" alt="BoldPiq" width={64} height={64} style={{ height: 64, width: 64 }} priority />
         </Link>
 
         {/* Desktop nav */}
@@ -133,8 +129,8 @@ export function Navigation({
             href={ctaHref}
             className="nav-cta"
             style={{
-              color: "#fff",
-              background: ACCENT,
+              color: isDark ? "#000" : "#fff",
+              background: fg,
               padding: "8px 20px",
               borderRadius: 100,
               fontSize: 13,
@@ -192,7 +188,7 @@ export function Navigation({
               position: "fixed",
               inset: 0,
               zIndex: 99,
-              background: "#FFFFFF",
+              background: isDark ? "#000" : "#fafafa",
               display: "flex",
               flexDirection: "column",
               overflowY: "auto",
@@ -200,32 +196,32 @@ export function Navigation({
             }}
           >
             <MenuGlow />
-            {/* ── TOP: badge + CSS Marquee ── */}
-            <div style={{ padding: "96px clamp(20px, 5vw, 40px) 32px", borderBottom: `1px solid ${menuBorder}` }}>
+            {/* ── TOP: Agency badge + CSS Marquee ── */}
+            <div style={{ padding: "96px clamp(20px, 5vw, 40px) 32px", borderBottom: `1px solid ${BORDER}` }}>
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.5 }}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "6px 18px", border: `1px solid ${menuBorder}`, borderRadius: 100, marginBottom: 28, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: menuMuted }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "6px 18px", border: `1px solid ${BORDER}`, borderRadius: 100, marginBottom: 28, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: MUTED }}
               >
                 <motion.span
                   animate={{ scale: [1, 1.4, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                   style={{ width: 7, height: 7, borderRadius: "50%", background: ACCENT, display: "block", flexShrink: 0 }}
                 />
-                SACAA-Accredited &middot; ICAO-Compliant &middot; International Students
+                Web Design &amp; Development Agency
               </motion.div>
 
-              {/* Pure CSS marquee */}
+              {/* Pure CSS marquee — zero JS scroll interference */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.25, duration: 0.5 }}
                 style={{
                   margin: "0 calc(-1 * clamp(20px, 5vw, 40px))",
-                  borderTop: `1px solid ${menuBorder}`,
-                  borderBottom: `1px solid ${menuBorder}`,
+                  borderTop: `1px solid ${BORDER}`,
+                  borderBottom: `1px solid ${BORDER}`,
                   padding: "13px 0",
                   overflow: "hidden",
                   pointerEvents: "none",
@@ -235,8 +231,8 @@ export function Navigation({
                 <div style={{ display: "flex", animation: "menuMarquee 28s linear infinite", whiteSpace: "nowrap", width: "max-content" }}>
                   {[...Array(4)].map((_, rep) => (
                     <span key={rep} style={{ display: "inline-flex", alignItems: "center" }}>
-                      {["PPL Training", "CPL Training", "ATPL Training", "SACAA Accredited", "ICAO Compliant", "Visa Guidance", "300+ Flyable Days", "Cost-Efficient Training", "End-to-End Support", "International Students"].map((item) => (
-                        <span key={item} style={{ display: "inline-flex", alignItems: "center", fontSize: 13, fontWeight: 500, color: menuMuted }}>
+                      {["Web Design", "Web Development", "Brand Identity", "GEO Optimised", "Conversion Focused", "Mobile First", "Sanity CMS", "Motion & Animation", "Results Driven", "Vercel Hosted"].map((item) => (
+                        <span key={item} style={{ display: "inline-flex", alignItems: "center", fontSize: 13, fontWeight: 500, color: MUTED }}>
                           {item}
                           <span style={{ margin: "0 16px", opacity: 0.3 }}>•</span>
                         </span>
@@ -264,7 +260,7 @@ export function Navigation({
                       fontSize: "clamp(28px, 7vw, 52px)",
                       fontWeight: 800,
                       letterSpacing: "-0.04em",
-                      color: menuFg,
+                      color: fg,
                       textDecoration: "none",
                       lineHeight: 1.15,
                       padding: "4px 0",
@@ -275,7 +271,7 @@ export function Navigation({
                 </motion.div>
               ))}
 
-              {/* Book consultation CTA */}
+              {/* Book a call CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -297,7 +293,7 @@ export function Navigation({
                     letterSpacing: "-0.01em",
                   }}
                 >
-                  Book Consultation →
+                  Book a Call →
                 </Link>
               </motion.div>
             </nav>
@@ -307,29 +303,29 @@ export function Navigation({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.85 }}
-              style={{ borderTop: `1px solid ${menuBorder}`, padding: "28px clamp(20px, 5vw, 40px) 40px", display: "flex", flexDirection: "column", gap: 20 }}
+              style={{ borderTop: `1px solid ${BORDER}`, padding: "28px clamp(20px, 5vw, 40px) 40px", display: "flex", flexDirection: "column", gap: 20 }}
             >
               {/* Logo + tagline */}
               <div>
                 <Link href="/" onClick={() => setOpen(false)} style={{ display: "inline-block", marginBottom: 10 }}>
-                  <Image src="/flight.svg" alt="SA Pilot Training" width={80} height={80} style={{ height: 80, width: 80 }} />
+                  <Image src="/logo.svg" alt="BoldPiq" width={54} height={80} style={{ height: 80, width: "auto" }} />
                 </Link>
-                <p style={{ color: menuMuted, fontSize: 12, lineHeight: 1.6, maxWidth: 280 }}>
-                  Expert guidance for international student pilots training in South Africa.
+                <p style={{ color: MUTED, fontSize: 12, lineHeight: 1.6, maxWidth: 260 }}>
+                  High-performance websites that attract, convert, and retain.
                 </p>
               </div>
 
               {/* Social links */}
               <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
                 {socialLinks.map(s => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="nav-social-link" style={{ color: menuMuted, fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}>
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="nav-social-link" style={{ color: MUTED, fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}>
                     {s.label}
                   </a>
                 ))}
               </div>
 
               {/* Legal links */}
-              <div style={{ borderTop: `1px solid ${menuBorder}`, paddingTop: 16, display: "flex", flexWrap: "wrap", gap: "4px 0", alignItems: "center" }}>
+              <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 16, display: "flex", flexWrap: "wrap", gap: "4px 0", alignItems: "center" }}>
                 {[
                   { label: "Terms of Service", href: "/terms" },
                   { label: "Privacy Policy", href: "/privacy" },
@@ -338,19 +334,19 @@ export function Navigation({
                   { label: "DPA", href: "/dpa" },
                 ].map((l, i, arr) => (
                   <span key={l.href} style={{ display: "inline-flex", alignItems: "center" }}>
-                    <Link href={l.href} onClick={() => setOpen(false)} className="footer-nav-link" style={{ color: menuMuted, fontSize: 11, textDecoration: "none", opacity: 0.7 }}>
+                    <Link href={l.href} onClick={() => setOpen(false)} className="footer-nav-link" style={{ color: MUTED, fontSize: 11, textDecoration: "none", opacity: 0.7 }}>
                       {l.label}
                     </Link>
                     {i < arr.length - 1 && (
-                      <span style={{ color: menuMuted, fontSize: 11, opacity: 0.3, margin: "0 8px" }}>|</span>
+                      <span style={{ color: MUTED, fontSize: 11, opacity: 0.3, margin: "0 8px" }}>|</span>
                     )}
                   </span>
                 ))}
               </div>
 
               {/* Copyright */}
-              <p style={{ color: menuMuted, fontSize: 11, opacity: 0.7 }}>
-                © {new Date().getFullYear()} SA Pilot Training. All rights reserved.
+              <p style={{ color: MUTED, fontSize: 11, opacity: 0.5 }}>
+                © {new Date().getFullYear()} BoldPiq. All rights reserved.
               </p>
             </motion.div>
           </motion.div>
@@ -365,7 +361,7 @@ export function Navigation({
           from { transform: translateX(0); }
           to { transform: translateX(-25%); }
         }
-        .nav-social-link:hover { color: #C8181A !important; }
+        .nav-social-link:hover { color: #fff !important; }
       `}</style>
     </>
   )
